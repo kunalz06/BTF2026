@@ -7,6 +7,7 @@ const navItems = [
   ["About", "/#about"],
   ["Event", "/#event"],
   ["Problems", "/problem-statements"],
+  ["Colleges", "/colleges"],
   ["Timeline", "/#timeline"],
   ["Rules", "/#rules"],
   ["FAQ", "/#faq"],
