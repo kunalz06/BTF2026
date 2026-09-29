@@ -1,3 +1,4 @@
+import { BrandLogo } from "@/components/brand-logos";
 import { eventContent } from "@/data/event";
 
 export function ClosingCta() {
@@ -20,8 +21,10 @@ export function Footer() {
   return (
     <footer className="site-footer">
       <div className="shell footer-row">
+        <div className="footer-brands" aria-label="Event hosts">
+          {eventContent.hosts.map((host) => <BrandLogo key={host.name} brand={host.name} />)}
+        </div>
         <strong>{eventContent.name} 2026</strong>
-        <span>{eventContent.hosts.map((host) => host.name).join(" · ")}</span>
         <span>Innovate · Collaborate · Build</span>
       </div>
     </footer>
