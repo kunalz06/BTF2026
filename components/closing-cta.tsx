@@ -10,7 +10,7 @@ export function ClosingCta() {
           <h2>Are you ready to <strong>build the future?</strong></h2>
           <p>{eventContent.cta.body}</p>
         </div>
-        <a className="button" href="#rules">Get Involved <span aria-hidden="true">→</span></a>
+        <a className="button" href="#rules">View Team Guidelines <span aria-hidden="true">→</span></a>
       </div>
     </section>
   );
