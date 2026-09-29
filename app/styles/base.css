@@ -71,7 +71,11 @@ h3 { line-height: 1.22; }
 .hero-tagline { margin-bottom: 18px; color: #e5edfa; font-size: clamp(1.08rem, 1.8vw, 1.28rem); font-weight: 700; }
 .hero-description { max-width: 670px; margin-bottom: 0; color: #b2bfd2; font-size: .94rem; }
 .hero-meta { margin: 28px 0; display: flex; flex-wrap: wrap; gap: 14px 26px; color: #e0e8f7; font-size: .88rem; font-weight: 700; }
-.hero-meta div { display: inline-flex; align-items: center; gap: 10px; }
+.hero-meta div,
+.hero-meta-location { display: inline-flex; align-items: center; gap: 10px; }
+.hero-meta-location { color: #e0e8f7; }
+.hero-meta-location:hover { color: #7fc6ff; }
+.hero-meta-location b { color: #6cb7ff; font-size: .72rem; }
 .hero-meta svg { width: 21px; height: 21px; color: #55a5ff; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; }
 
