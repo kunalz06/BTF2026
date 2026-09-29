@@ -38,6 +38,11 @@
 .info-hosts { display: grid; gap: 8px; margin-top: 9px; color: #263247; }
 .info-hosts .brand-logo-mark { width: 23px; height: 23px; }
 .info-hosts .brand-logo-label { font-size: .75rem; }
+.info-venue { display: grid; gap: 7px; margin-top: 4px; }
+.info-venue strong { color: #182235; font-size: .86rem; line-height: 1.35; }
+.info-venue > span { color: #637087; font-size: .74rem; line-height: 1.45; }
+.info-venue > a { margin-top: 4px; color: #2678d9; font-size: .72rem; font-weight: 850; }
+.info-venue > a:hover { color: #175aab; }
 
 .timeline-section { padding-top: 78px; background: linear-gradient(180deg,#f5f8fc,#eef3f9); color: var(--light-text); border-top: 1px solid #e5eaf2; }
 .timeline { position: relative; display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; margin-top: 48px; }
