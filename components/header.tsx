@@ -29,15 +29,15 @@ export function Header() {
           {navItems.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
         </nav>
 
-        <Link className="button button-small desktop-cta" href="/#participate">
-          Get Involved <span aria-hidden="true">→</span>
+        <Link className="button button-small desktop-cta" href="/participation">
+          Participation <span aria-hidden="true">→</span>
         </Link>
 
         <details className="mobile-nav">
           <summary aria-label="Open navigation">Menu</summary>
           <nav aria-label="Mobile navigation">
             {navItems.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
-            <Link className="mobile-cta" href="/#participate">Get Involved</Link>
+            <Link className="mobile-cta" href="/participation">Participation</Link>
           </nav>
         </details>
       </div>
