@@ -6,7 +6,7 @@ export function ClosingCta() {
       <div className="closing-grid" aria-hidden="true" />
       <div className="shell closing-content">
         <div>
-          <p className="eyebrow">Let's build a brighter tomorrow</p>
+          <p className="eyebrow">Let&apos;s build a brighter tomorrow</p>
           <h2>{eventContent.cta.heading}</h2>
           <p>{eventContent.cta.body}</p>
         </div>
