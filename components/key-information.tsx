@@ -1,3 +1,4 @@
+import { BrandLogo } from "@/components/brand-logos";
 import { eventContent } from "@/data/event";
 
 export function KeyInformation() {
@@ -11,7 +12,13 @@ export function KeyInformation() {
             <article className="info-card" key={item.label}>
               <span className="info-index" aria-hidden="true">0{index + 1}</span>
               <h3>{item.label}</h3>
-              <p>{item.value}</p>
+              {item.label === "Hosted by" ? (
+                <div className="info-hosts" aria-label="Event hosts">
+                  {eventContent.hosts.map((host) => <BrandLogo key={host.name} brand={host.name} />)}
+                </div>
+              ) : (
+                <p>{item.value}</p>
+              )}
             </article>
           ))}
         </div>
