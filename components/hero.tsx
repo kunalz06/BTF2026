@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { EventIcon } from "@/components/event-icons";
 import { eventContent } from "@/data/event";
 
@@ -26,8 +27,8 @@ export function Hero() {
           </div>
 
           <div className="hero-actions">
-            <a className="button" href="/#participate">Get Involved <span aria-hidden="true">→</span></a>
-            <a className="text-link" href="#rules">View participation rules <span aria-hidden="true">↘</span></a>
+            <Link className="button" href="/#participate">Get Involved <span aria-hidden="true">→</span></Link>
+            <Link className="text-link" href="/#rules">View participation rules <span aria-hidden="true">↘</span></Link>
           </div>
         </div>
 
