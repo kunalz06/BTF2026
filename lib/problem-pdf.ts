@@ -7,6 +7,7 @@ type PdfLine = {
   leading: number;
   color?: [number, number, number];
   gapBefore?: number;
+  pageBreakBefore?: boolean;
 };
 
 const encoder = new TextEncoder();
@@ -64,12 +65,26 @@ function addWrapped(
   }
 }
 
-function addSection(lines: PdfLine[], title: string, body?: string, bullets?: readonly string[]) {
-  lines.push({ text: title, font: "bold", size: 12, leading: 17, color: [0.06, 0.09, 0.15], gapBefore: 8 });
+function addSection(
+  lines: PdfLine[],
+  title: string,
+  body?: string,
+  bullets?: readonly string[],
+  pageBreakBefore = false,
+) {
+  lines.push({
+    text: title,
+    font: "bold",
+    size: 12,
+    leading: 17,
+    color: [0.06, 0.09, 0.15],
+    gapBefore: 8,
+    pageBreakBefore,
+  });
 
   if (body) {
     addWrapped(lines, body, {
-      maxChars: 94,
+      maxChars: 86,
       font: "regular",
       size: 9.5,
       leading: 14,
@@ -79,7 +94,7 @@ function addSection(lines: PdfLine[], title: string, body?: string, bullets?: re
 
   if (bullets) {
     for (const bullet of bullets) {
-      const wrapped = wrapText(bullet, 88);
+      const wrapped = wrapText(bullet, 78);
       wrapped.forEach((line, index) => {
         lines.push({
           text: index === 0 ? `- ${line}` : `  ${line}`,
@@ -95,7 +110,7 @@ function addSection(lines: PdfLine[], title: string, body?: string, bullets?: re
 
 function buildLines(problem: ProblemStatement) {
   const lines: PdfLine[] = [];
-  lines.push({ text: `PROBLEM STATEMENT | ${problem.id}`, font: "bold", size: 8, leading: 13, color: [0.15, 0.51, 1] });
+  lines.push({ text: `PROBLEM STATEMENT | ${problem.id}`, font: "bold", size: 8, leading: 24, color: [0.15, 0.51, 1] });
 
   for (const titleLine of wrapText(problem.title, 44)) {
     lines.push({ text: titleLine, font: "bold", size: 22, leading: 25, color: [0.06, 0.09, 0.15] });
@@ -111,7 +126,7 @@ function buildLines(problem: ProblemStatement) {
   });
 
   addWrapped(lines, problem.summary, {
-    maxChars: 92,
+    maxChars: 82,
     font: "regular",
     size: 10.5,
     leading: 15,
@@ -123,17 +138,21 @@ function buildLines(problem: ProblemStatement) {
   addSection(lines, "Objective", problem.objective);
   addSection(lines, "Functional Requirements", undefined, problem.requirements);
   addSection(lines, "Constraints and Safety Boundaries", undefined, problem.constraints);
-  addSection(lines, "Expected Deliverables", undefined, problem.deliverables);
+  addSection(lines, "Expected Deliverables", undefined, problem.deliverables, true);
   addSection(lines, "Evaluation Criteria", undefined, problem.evaluation);
 
-  lines.push({
-    text: "Submission note: clearly state assumptions, limitations, test conditions, datasets, APIs, pretrained models, and hardware modules used.",
-    font: "regular",
-    size: 8.5,
-    leading: 13,
-    color: [0.32, 0.38, 0.47],
-    gapBefore: 8,
-  });
+  addWrapped(
+    lines,
+    "Submission note: clearly state assumptions, limitations, test conditions, datasets, APIs, pretrained models, and hardware modules used.",
+    {
+      maxChars: 86,
+      font: "regular",
+      size: 8.5,
+      leading: 13,
+      color: [0.32, 0.38, 0.47],
+      gapBefore: 8,
+    },
+  );
 
   return lines;
 }
@@ -186,7 +205,7 @@ function paginate(lines: PdfLine[]) {
 
   for (const line of lines) {
     const cost = line.leading + (line.gapBefore ?? 0);
-    if (current.length > 0 && used + cost > capacity) {
+    if (current.length > 0 && (line.pageBreakBefore || used + cost > capacity)) {
       pages.push(current);
       current = [];
       used = 0;
