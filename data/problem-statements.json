@@ -1,0 +1,559 @@
+[
+  {
+    "id": "BTF-D01",
+    "slug": "gps-denied-indoor-autonomous-navigation-drone",
+    "title": "GPS-Denied Indoor Autonomous Navigation Drone",
+    "track": "Drones",
+    "type": "Hybrid",
+    "difficulty": "Advanced",
+    "summary": "Build an autonomous indoor drone system that can localize, plan, avoid obstacles, and complete waypoint missions without GPS.",
+    "problem": "Indoor environments such as warehouses, campuses, factories, and emergency-response zones often block or degrade GPS. Conventional drones can become unstable or lose navigation capability when they depend on satellite positioning. The challenge is to create a practical indoor autonomy stack that can estimate local position, navigate through unknown or partially known spaces, avoid obstacles, and return safely using onboard sensing and computation.",
+    "objective": "Design and demonstrate a quadrotor autonomy solution that can take off, navigate through a bounded indoor test area, visit a sequence of target zones, avoid static obstacles, and land safely without using GPS.",
+    "requirements": [
+      "Use onboard or companion-computer sensing for local position estimation without GPS.",
+      "Support autonomous takeoff, waypoint or goal navigation, obstacle avoidance, hover, and landing.",
+      "Maintain a usable local map or local obstacle representation during flight.",
+      "Detect estimator degradation and trigger a safe behavior such as hover, controlled landing, or mission abort.",
+      "Provide mission telemetry and logs that allow judges to inspect position quality, sensor health, and mission state.",
+      "Demonstrate repeatable operation in at least two indoor layouts with different obstacle arrangements."
+    ],
+    "constraints": [
+      "No GPS or external motion-capture system may be used for the scored autonomous run.",
+      "The drone must include propeller guards or equivalent safety measures for indoor testing.",
+      "All flight logic must include explicit failsafes for sensor loss, low battery, and loss of companion-computer control.",
+      "The solution should be portable and should not require permanent infrastructure in the test area."
+    ],
+    "deliverables": [
+      "Working autonomous drone prototype or high-fidelity hardware-in-the-loop demonstration.",
+      "Architecture diagram covering sensors, estimation, planning, control, and safety logic.",
+      "Source code and reproducible setup instructions.",
+      "Flight logs from successful and failed/recovered runs.",
+      "Short technical note describing accuracy, limitations, and safety behavior."
+    ],
+    "evaluation": [
+      "Navigation success and landing reliability - 30%",
+      "Localization stability and obstacle avoidance quality - 25%",
+      "Safety, failsafes, and fault recovery - 20%",
+      "System engineering and reproducibility - 15%",
+      "Innovation and practical deployability - 10%"
+    ]
+  },
+  {
+    "id": "BTF-D02",
+    "slug": "drone-battery-propulsion-health-intelligence",
+    "title": "Drone Battery and Propulsion Health Intelligence",
+    "track": "Drones",
+    "type": "Hybrid",
+    "difficulty": "Intermediate",
+    "summary": "Create a drone health-monitoring system that predicts battery, motor, and propulsion anomalies before they become mission failures.",
+    "problem": "Small drones are sensitive to battery degradation, motor imbalance, damaged propellers, loose connectors, and overheating. These faults are often detected only after performance drops or a flight becomes unsafe. Teams must build a health-intelligence layer that combines electrical, thermal, vibration, and flight telemetry to identify abnormal behavior and estimate whether the vehicle is safe to continue a mission.",
+    "objective": "Develop a real-time health-monitoring solution that detects propulsion and power-system anomalies, estimates severity, and recommends a safe action such as continue, return, or land.",
+    "requirements": [
+      "Monitor battery voltage/current plus at least one propulsion-health signal such as motor RPM, vibration, ESC telemetry, or temperature.",
+      "Detect at least three distinct fault or degradation scenarios.",
+      "Provide a health score or risk state with a clear explanation of the contributing signals.",
+      "Operate on live telemetry or a realistic replay stream with bounded processing latency.",
+      "Include trend analysis so gradual degradation can be separated from short transient events.",
+      "Expose results through a dashboard, ground-station widget, or machine-readable API."
+    ],
+    "constraints": [
+      "The system must not disable the flight controller's native safety protections.",
+      "Fault injection during demonstrations must be safe and must not intentionally create uncontrolled flight.",
+      "Training data may be synthetic or logged, but teams must describe how it represents real hardware behavior."
+    ],
+    "deliverables": [
+      "Working monitoring prototype with live or replay telemetry.",
+      "Fault-detection model or rule engine and evaluation dataset.",
+      "Dashboard or API showing health state, trends, and recommended action.",
+      "Report on false positives, missed detections, and operating limits."
+    ],
+    "evaluation": [
+      "Fault detection accuracy and timeliness - 30%",
+      "Quality of health scoring and explanations - 20%",
+      "Robustness across operating conditions - 20%",
+      "Integration quality and usability - 15%",
+      "Safety and engineering rigor - 15%"
+    ]
+  },
+  {
+    "id": "BTF-D03",
+    "slug": "collaborative-multi-drone-mapping-intermittent-connectivity",
+    "title": "Collaborative Multi-Drone Mapping with Intermittent Connectivity",
+    "track": "Drones",
+    "type": "Software",
+    "difficulty": "Advanced",
+    "summary": "Design a decentralized mapping and task-coordination stack for multiple drones operating with unreliable inter-drone communication.",
+    "problem": "Multi-drone teams can cover large areas faster than a single vehicle, but real environments create communication dropouts, bandwidth constraints, duplicate exploration, and inconsistent maps. The challenge is to coordinate exploration and merge map information while allowing each drone to continue operating independently when links become unreliable.",
+    "objective": "Build a multi-agent software system that assigns exploration regions, avoids unnecessary duplication, and merges mapping updates after temporary communication loss.",
+    "requirements": [
+      "Support at least three simulated or physical drone agents.",
+      "Maintain independent local autonomy when the communication link between agents is unavailable.",
+      "Exchange compact map or feature updates instead of continuously streaming all raw sensor data.",
+      "Resolve duplicate or conflicting map observations when connectivity returns.",
+      "Track task ownership so agents can redistribute work after a drone failure or timeout.",
+      "Provide a visual dashboard showing agent state, connectivity, assigned regions, and merged coverage."
+    ],
+    "constraints": [
+      "Scored tests will include forced communication outages and limited bandwidth.",
+      "The system must avoid a single point of failure for basic exploration progress.",
+      "Teams may use simulation, physical drones, or both, but network impairment must be reproducible."
+    ],
+    "deliverables": [
+      "Multi-agent coordination and map-merging software.",
+      "Network impairment test harness or reproducible simulation scenario.",
+      "Coverage and bandwidth metrics across multiple test runs.",
+      "Architecture document explaining decentralized state, synchronization, and recovery."
+    ],
+    "evaluation": [
+      "Coverage efficiency - 25%",
+      "Resilience to communication loss - 25%",
+      "Map consistency after reconnection - 20%",
+      "Bandwidth efficiency - 15%",
+      "Architecture clarity and reproducibility - 15%"
+    ]
+  },
+  {
+    "id": "BTF-D04",
+    "slug": "vision-guided-precision-landing-dynamic-marker",
+    "title": "Vision-Guided Precision Landing on a Dynamic Marker",
+    "track": "Drones",
+    "type": "Hybrid",
+    "difficulty": "Intermediate",
+    "summary": "Build a vision-guided landing system that can locate and safely land on a marked platform whose position changes between runs.",
+    "problem": "Autonomous drones often need to land accurately where GPS is unavailable or insufficiently precise. A useful system should identify a landing target from onboard imagery, estimate relative pose, reject false detections, and guide the aircraft through a stable descent even when lighting and target position vary.",
+    "objective": "Create a landing solution that detects a designated visual marker or landing pad, estimates relative position, aligns the vehicle, and performs a controlled landing with repeatable accuracy.",
+    "requirements": [
+      "Detect the landing target from an onboard or downward-facing camera.",
+      "Estimate relative lateral offset and target orientation or heading where applicable.",
+      "Transition from search to alignment to descent using a clearly defined state machine.",
+      "Handle partial target occlusion and moderate lighting variation.",
+      "Reject obvious false positives and abort descent when visual confidence becomes unsafe.",
+      "Log landing error for every scored attempt."
+    ],
+    "constraints": [
+      "Target position will vary between trials.",
+      "No external tracking system may directly provide the landing target pose during the scored run.",
+      "The solution must include a safe go-around or hover behavior when target confidence is lost."
+    ],
+    "deliverables": [
+      "Working visual landing pipeline.",
+      "Landing-state logic and confidence handling.",
+      "Accuracy results across multiple positions and lighting conditions.",
+      "Short demonstration video plus source and setup instructions."
+    ],
+    "evaluation": [
+      "Landing accuracy - 35%",
+      "Target detection robustness - 20%",
+      "Safety and abort behavior - 20%",
+      "Repeatability and test quality - 15%",
+      "System efficiency - 10%"
+    ]
+  },
+  {
+    "id": "BTF-D05",
+    "slug": "low-cost-obstacle-detection-collision-avoidance-module",
+    "title": "Low-Cost Obstacle Detection and Collision Avoidance Module",
+    "track": "Drones",
+    "type": "Hardware",
+    "difficulty": "Intermediate",
+    "summary": "Develop a compact sensing module that gives small drones reliable short-range obstacle awareness without expensive perception hardware.",
+    "problem": "Many low-cost drones lack dependable proximity awareness in cluttered indoor environments. Premium LiDAR and depth cameras can add cost, mass, power draw, and processing load. This challenge asks teams to engineer a lightweight sensor module and processing pipeline that detects nearby obstacles and exposes simple avoidance information to an autopilot or companion computer.",
+    "objective": "Build a low-cost, lightweight obstacle-awareness module that detects hazards around a drone and outputs distance or avoidance information with predictable latency.",
+    "requirements": [
+      "Use one or more economical sensors such as time-of-flight, ultrasonic, compact LiDAR, stereo, or small cameras.",
+      "Cover at least the forward flight direction and one additional direction or sector.",
+      "Provide obstacle distance or occupancy output at a rate suitable for low-speed indoor flight.",
+      "Characterize minimum and maximum reliable sensing range.",
+      "Measure update rate, latency, mass, and power consumption.",
+      "Demonstrate integration with a flight controller, companion computer, or avoidance simulator."
+    ],
+    "constraints": [
+      "Total added mass and power should be minimized and reported.",
+      "The design must use commercially accessible components or clearly documented custom hardware.",
+      "Test procedures must not intentionally risk people or property."
+    ],
+    "deliverables": [
+      "Working sensor module and mounting design.",
+      "Firmware or processing software.",
+      "Range, latency, field-of-view, mass, and power test results.",
+      "Integration demonstration and bill of materials."
+    ],
+    "evaluation": [
+      "Detection reliability and useful field of view - 30%",
+      "Latency and update rate - 20%",
+      "Mass, power, and cost efficiency - 20%",
+      "Integration quality - 15%",
+      "Mechanical/electrical design quality - 15%"
+    ]
+  },
+  {
+    "id": "BTF-AI01",
+    "slug": "multimodal-industrial-defect-detection-assistant",
+    "title": "Multimodal Industrial Defect Detection Assistant",
+    "track": "AI Software",
+    "type": "Software",
+    "difficulty": "Advanced",
+    "summary": "Create an AI inspection assistant that combines images with operator notes or sensor context to identify and explain industrial defects.",
+    "problem": "Visual defect detection systems often operate on images alone, even though operators also have useful context such as machine state, recent maintenance, sensor readings, and text notes. A multimodal system could improve detection quality and provide better explanations, but it must remain robust when one information source is incomplete or noisy.",
+    "objective": "Develop a multimodal defect-analysis application that combines visual evidence with structured or textual context and returns a defect class, confidence, explanation, and recommended next inspection step.",
+    "requirements": [
+      "Process images plus at least one additional modality such as text notes, temperature, vibration summary, or machine metadata.",
+      "Detect or classify at least four defect categories plus a normal condition.",
+      "Return calibrated confidence and a human-readable explanation grounded in the provided evidence.",
+      "Handle missing secondary context without failing the entire analysis.",
+      "Provide a review workflow that lets a human accept, reject, or correct the AI result.",
+      "Track model performance by class and data modality."
+    ],
+    "constraints": [
+      "Teams must document dataset provenance and avoid using sensitive data without permission.",
+      "The system must not present uncertain outputs as certain facts.",
+      "If generative AI is used, explanations must be tied to actual model or sensor evidence."
+    ],
+    "deliverables": [
+      "Working web or desktop inspection assistant.",
+      "Trained or integrated multimodal model pipeline.",
+      "Evaluation set with precision, recall, F1, and confidence-quality analysis.",
+      "Documentation of human-review and failure-handling behavior."
+    ],
+    "evaluation": [
+      "Defect detection quality - 30%",
+      "Multimodal robustness - 20%",
+      "Explanation quality and calibration - 20%",
+      "Human-review UX - 15%",
+      "Reproducibility and engineering quality - 15%"
+    ]
+  },
+  {
+    "id": "BTF-AI02",
+    "slug": "explainable-ai-campus-energy-optimization",
+    "title": "Explainable AI for Campus Energy Optimization",
+    "track": "AI Software",
+    "type": "Software",
+    "difficulty": "Intermediate",
+    "summary": "Build an AI system that forecasts building energy demand and recommends transparent actions to reduce avoidable consumption.",
+    "problem": "Campuses and offices collect meter, weather, and occupancy data but often lack tools that convert the data into actionable, understandable energy-saving decisions. Forecasts alone are not enough; operators need to know why demand is expected to rise and which controllable actions are likely to help.",
+    "objective": "Create an energy-intelligence platform that predicts short-term demand, identifies likely drivers, and recommends measurable efficiency actions with explanations.",
+    "requirements": [
+      "Forecast energy consumption for at least one building or synthetic campus dataset.",
+      "Use contextual variables such as time, weather, occupancy, schedules, or equipment state.",
+      "Explain the strongest factors influencing each forecast or anomaly.",
+      "Recommend non-destructive efficiency actions and estimate expected impact.",
+      "Show baseline versus optimized scenarios in a dashboard.",
+      "Report forecast error and recommendation confidence."
+    ],
+    "constraints": [
+      "The system must not automatically disable safety-critical building systems.",
+      "Recommendations should account for comfort or service constraints supplied in the dataset.",
+      "Teams may use public or synthetic data but must explain assumptions."
+    ],
+    "deliverables": [
+      "Forecasting and recommendation application.",
+      "Dashboard with forecast, drivers, anomalies, and recommended actions.",
+      "Evaluation report using suitable time-series metrics.",
+      "Documentation of assumptions, constraints, and model limitations."
+    ],
+    "evaluation": [
+      "Forecast accuracy - 25%",
+      "Recommendation usefulness - 25%",
+      "Explainability - 20%",
+      "Dashboard usability - 15%",
+      "Robustness and reproducibility - 15%"
+    ]
+  },
+  {
+    "id": "BTF-AI03",
+    "slug": "ai-document-intake-classification-action-routing",
+    "title": "AI Document Intake, Classification and Action Routing",
+    "track": "AI Software",
+    "type": "Software",
+    "difficulty": "Intermediate",
+    "summary": "Automate the intake of mixed documents by extracting information, classifying intent, and routing each item to the right workflow with human review.",
+    "problem": "Organizations receive forms, letters, invoices, requests, PDFs, and scanned documents through multiple channels. Manual triage is slow and inconsistent, while naive automation often fails on unusual layouts or uncertain text. Teams must create a reliable document-intelligence pipeline that can recognize document types, extract key fields, detect uncertainty, and route work appropriately.",
+    "objective": "Build an AI document intake service that converts incoming files into structured data, assigns a workflow category, and sends uncertain cases to a human-review queue.",
+    "requirements": [
+      "Support at least three common document formats or categories.",
+      "Extract defined fields into structured JSON or database records.",
+      "Classify document intent or destination workflow.",
+      "Expose confidence for extracted fields and classification decisions.",
+      "Route low-confidence cases to a review interface where corrections are captured.",
+      "Maintain an audit trail showing what the AI extracted, changed, and routed."
+    ],
+    "constraints": [
+      "Sensitive information must be masked in logs and demonstrations unless synthetic data is used.",
+      "The system must preserve original files for traceability.",
+      "Teams should avoid irreversible actions based only on uncertain AI output."
+    ],
+    "deliverables": [
+      "Document intake service and review interface.",
+      "Extraction and classification pipeline.",
+      "Audit trail and structured output examples.",
+      "Accuracy results and error analysis."
+    ],
+    "evaluation": [
+      "Extraction and classification accuracy - 30%",
+      "Confidence handling and review workflow - 20%",
+      "Auditability - 20%",
+      "Usability and integration design - 15%",
+      "Security-conscious engineering - 15%"
+    ]
+  },
+  {
+    "id": "BTF-AI04",
+    "slug": "privacy-preserving-edge-vision-analytics",
+    "title": "Privacy-Preserving Edge Vision Analytics",
+    "track": "AI Software",
+    "type": "Hybrid",
+    "difficulty": "Advanced",
+    "summary": "Design an edge AI vision system that extracts useful operational events while minimizing storage and transmission of identifiable imagery.",
+    "problem": "Vision analytics can help count occupancy, detect queue length, monitor equipment, or understand space utilization, but continuous cloud video streaming introduces privacy, bandwidth, and security concerns. Teams must perform inference at the edge and transmit only the minimum event information needed by the application.",
+    "objective": "Build an edge-vision prototype that detects selected non-sensitive operational events locally, applies privacy protections, and sends compact metadata to a dashboard.",
+    "requirements": [
+      "Run inference on an edge device or realistically constrained local compute environment.",
+      "Detect at least two operational event types such as occupancy count, queue threshold, object presence, or equipment-state change.",
+      "Avoid transmitting raw continuous video during normal operation.",
+      "Apply privacy processing such as face blurring, region masking, on-device frame disposal, or equivalent minimization.",
+      "Provide a dashboard that displays event metadata and device health.",
+      "Measure inference latency, network bandwidth, and edge compute utilization."
+    ],
+    "constraints": [
+      "Do not perform identity recognition or biometric identification.",
+      "Use consented, public, synthetic, or staged demonstration data.",
+      "Teams must document retention policy and what data leaves the edge device."
+    ],
+    "deliverables": [
+      "Edge inference prototype and event dashboard.",
+      "Privacy architecture and data-flow diagram.",
+      "Performance measurements for latency, bandwidth, and accuracy.",
+      "Threat/limitations note describing residual privacy risks."
+    ],
+    "evaluation": [
+      "Event detection performance - 25%",
+      "Privacy-by-design quality - 25%",
+      "Edge efficiency - 20%",
+      "System reliability - 15%",
+      "Clarity of data governance and documentation - 15%"
+    ]
+  },
+  {
+    "id": "BTF-AI05",
+    "slug": "model-drift-data-quality-monitoring-platform",
+    "title": "Model Drift and Data Quality Monitoring Platform",
+    "track": "AI Software",
+    "type": "Software",
+    "difficulty": "Advanced",
+    "summary": "Create an observability platform that detects data drift, model-performance degradation, and data-quality issues before they silently affect production AI.",
+    "problem": "AI models often perform well at launch and degrade as real-world data changes. Teams may also face missing fields, sensor shifts, class imbalance, delayed labels, or upstream data-pipeline failures. A production team needs early warning, useful diagnostics, and a way to decide whether the model should continue serving predictions.",
+    "objective": "Build an AI observability system that monitors input data and model outcomes over time, detects significant drift or quality failures, and produces actionable alerts.",
+    "requirements": [
+      "Monitor feature distributions and at least two data-quality dimensions such as missingness, range violations, duplicates, or schema changes.",
+      "Support at least one drift detection method for numerical or categorical features.",
+      "Track model performance when labels become available and distinguish data drift from performance drift.",
+      "Provide configurable thresholds and alert severity.",
+      "Visualize trends, incidents, and affected features.",
+      "Generate a concise incident report describing likely causes and suggested next checks."
+    ],
+    "constraints": [
+      "The platform must work with at least one tabular or time-series model use case.",
+      "Alerts should avoid flooding users with repeated duplicate incidents.",
+      "Teams must explain statistical assumptions and known blind spots."
+    ],
+    "deliverables": [
+      "Monitoring dashboard and alert engine.",
+      "Synthetic or real drift scenarios for repeatable testing.",
+      "Detection latency and false-alert analysis.",
+      "Documentation for integrating a new model/data source."
+    ],
+    "evaluation": [
+      "Drift and data-quality detection effectiveness - 30%",
+      "Alert usefulness and noise control - 20%",
+      "Diagnostics and visualization - 20%",
+      "Integration architecture - 15%",
+      "Statistical rigor and reproducibility - 15%"
+    ]
+  },
+  {
+    "id": "BTF-AU01",
+    "slug": "smart-laboratory-inventory-replenishment-system",
+    "title": "Smart Laboratory Inventory and Replenishment System",
+    "track": "Automation",
+    "type": "Hybrid",
+    "difficulty": "Intermediate",
+    "summary": "Automate laboratory inventory tracking, consumption visibility, and low-stock replenishment without relying on continuous manual counting.",
+    "problem": "Teaching and research laboratories frequently lose time because components, consumables, and tools are misplaced or unexpectedly out of stock. Manual spreadsheets become stale quickly. Teams must create a practical automation system that senses or records inventory movement, maintains trustworthy stock state, and triggers reviewable replenishment actions.",
+    "objective": "Build an inventory automation prototype that tracks stock changes, detects low inventory, and creates a human-approved replenishment workflow.",
+    "requirements": [
+      "Track at least ten distinct inventory items using RFID, barcode/QR, weight sensing, computer vision, manual scan, or a hybrid approach.",
+      "Maintain current quantity, location, and minimum-stock threshold.",
+      "Generate low-stock alerts and a proposed replenishment list.",
+      "Provide check-in/check-out or consumption logging with user accountability.",
+      "Include correction mechanisms for inventory mismatch.",
+      "Show usage history and estimated future stock-out date for frequently used items."
+    ],
+    "constraints": [
+      "Purchase orders must require explicit human approval in the demo workflow.",
+      "The hardware should be safe for use around common laboratory equipment.",
+      "Teams must report sensing errors and reconciliation strategy."
+    ],
+    "deliverables": [
+      "Working inventory prototype and dashboard.",
+      "Sensing/scanning hardware or simulated integration.",
+      "Replenishment workflow and audit history.",
+      "Accuracy, latency, and failure-recovery results."
+    ],
+    "evaluation": [
+      "Inventory accuracy - 30%",
+      "Automation usefulness - 20%",
+      "Reconciliation and auditability - 20%",
+      "Hardware/software integration - 15%",
+      "Usability and deployability - 15%"
+    ]
+  },
+  {
+    "id": "BTF-AU02",
+    "slug": "adaptive-conveyor-sorting-machine-vision",
+    "title": "Adaptive Conveyor Sorting with Machine Vision",
+    "track": "Automation",
+    "type": "Hybrid",
+    "difficulty": "Advanced",
+    "summary": "Create a conveyor sorting system that identifies objects with vision and adapts actuator timing to changing belt speed and object spacing.",
+    "problem": "Fixed-timing conveyor automation becomes unreliable when belt speed, object size, spacing, or visual appearance changes. Modern systems need perception linked to deterministic actuation so the sorter can make decisions in real time and still place objects into the correct bin.",
+    "objective": "Build a machine-vision sorting prototype that classifies objects on a moving conveyor and controls an actuator to route each item correctly despite variable speed and spacing.",
+    "requirements": [
+      "Classify at least four object categories using camera input.",
+      "Estimate object position and arrival time at the sorting point.",
+      "Control at least one physical or simulated actuator for diversion.",
+      "Adapt timing when conveyor speed changes during a run.",
+      "Detect missed or uncertain classifications and route them to a safe exception path.",
+      "Measure end-to-end throughput, classification accuracy, and sorting accuracy."
+    ],
+    "constraints": [
+      "Emergency stop and safe actuator behavior must be demonstrated for physical systems.",
+      "No unsafe high-speed machinery is required; tabletop or simulated conveyors are acceptable.",
+      "The system must log every item decision and final route."
+    ],
+    "deliverables": [
+      "Working conveyor/sorting prototype or hardware-in-the-loop simulator.",
+      "Vision model and actuator-control logic.",
+      "Performance dashboard or logs.",
+      "Test report covering speed variation and uncertain objects."
+    ],
+    "evaluation": [
+      "Sorting accuracy - 30%",
+      "Adaptation to speed/spacing changes - 25%",
+      "Latency and throughput - 15%",
+      "Safety and exception handling - 15%",
+      "Integration and engineering quality - 15%"
+    ]
+  },
+  {
+    "id": "BTF-AU03",
+    "slug": "autonomous-greenhouse-monitoring-climate-control",
+    "title": "Autonomous Greenhouse Monitoring and Climate Control",
+    "track": "Automation",
+    "type": "Hybrid",
+    "difficulty": "Intermediate",
+    "summary": "Build a closed-loop greenhouse controller that monitors environmental conditions and automatically manages irrigation and climate targets.",
+    "problem": "Small greenhouses are often managed through fixed schedules that do not adapt to weather, soil moisture, plant stage, or equipment faults. This can waste water and energy while still allowing harmful temperature or humidity conditions. Teams must create a resilient sensing and control system with clear operator visibility.",
+    "objective": "Develop a greenhouse automation prototype that senses environment conditions, controls at least two actuators, and keeps selected variables within configured target ranges.",
+    "requirements": [
+      "Monitor at least temperature, humidity, and soil moisture or an equivalent growing-medium measurement.",
+      "Control at least two functions such as irrigation, ventilation, lighting, or circulation.",
+      "Use closed-loop logic rather than only fixed schedules.",
+      "Provide manual override and clearly show whether each actuator is under automatic or manual control.",
+      "Detect disconnected or implausible sensor readings.",
+      "Log environmental trends, actuator activity, and water/energy usage where measurable."
+    ],
+    "constraints": [
+      "The prototype may be tabletop scale.",
+      "Actuator defaults must be safe when the controller loses power or communication.",
+      "Teams should avoid control decisions that could damage plants or equipment."
+    ],
+    "deliverables": [
+      "Working greenhouse controller and dashboard.",
+      "Sensor/actuator hardware or realistic emulator.",
+      "Control strategy and fault-handling documentation.",
+      "Trend data from an extended test run."
+    ],
+    "evaluation": [
+      "Environmental control quality - 25%",
+      "Resource efficiency - 20%",
+      "Fault detection and safe fallback - 20%",
+      "Dashboard and operator control - 15%",
+      "Hardware/software integration - 20%"
+    ]
+  },
+  {
+    "id": "BTF-AU04",
+    "slug": "electrical-panel-inspection-maintenance-automation",
+    "title": "Electrical Panel Inspection and Maintenance Automation",
+    "track": "Automation",
+    "type": "Hybrid",
+    "difficulty": "Advanced",
+    "summary": "Automate routine inspection of electrical panels using sensors, vision, and structured maintenance workflows without performing live hazardous intervention.",
+    "problem": "Routine panel inspections require technicians to repeatedly check visual indicators, temperatures, labels, and maintenance records. Some observations can be collected automatically, allowing technicians to focus on confirmed anomalies. The challenge is to build a safe inspection assistant that gathers non-invasive evidence and creates actionable maintenance records.",
+    "objective": "Develop an inspection system that captures panel condition data, flags anomalies, and creates a traceable maintenance task while keeping humans in control of any physical electrical work.",
+    "requirements": [
+      "Inspect a de-energized demo panel, simulator, or safe low-voltage mock-up.",
+      "Capture at least two evidence types such as thermal readings, visual indicator state, label/QR identity, or environmental sensors.",
+      "Associate observations with a specific asset or panel record.",
+      "Detect configured anomaly conditions and assign severity.",
+      "Create a maintenance task containing evidence, timestamp, asset identity, and recommended inspection step.",
+      "Maintain a history of repeated inspections for trend comparison."
+    ],
+    "constraints": [
+      "No participant is required to work on live mains-voltage equipment.",
+      "The solution must not autonomously switch or modify energized electrical circuits.",
+      "Safety notes and test boundaries must be clearly documented."
+    ],
+    "deliverables": [
+      "Inspection hardware/software prototype.",
+      "Asset registry and maintenance-task workflow.",
+      "Anomaly detection test cases and evidence logs.",
+      "Safety architecture and limitations document."
+    ],
+    "evaluation": [
+      "Inspection reliability - 25%",
+      "Evidence quality and traceability - 20%",
+      "Workflow automation - 20%",
+      "Safety-first design - 20%",
+      "System usability - 15%"
+    ]
+  },
+  {
+    "id": "BTF-AU05",
+    "slug": "no-code-academic-administration-workflow-automation",
+    "title": "No-Code Academic Administration Workflow Automation",
+    "track": "Automation",
+    "type": "Software",
+    "difficulty": "Intermediate",
+    "summary": "Build a no-code workflow builder that lets non-programmers automate repetitive academic administration with approvals, reminders, and audit trails.",
+    "problem": "College administrative teams repeatedly handle requests such as approvals, document collection, event permissions, certificates, room requests, and deadline reminders. These workflows are often managed by email and spreadsheets, making status difficult to track. A safe automation platform should allow staff to model processes without writing code while preserving approval checkpoints and accountability.",
+    "objective": "Create a visual workflow automation platform that can model, execute, and monitor common academic processes using forms, conditions, approvals, notifications, and deadlines.",
+    "requirements": [
+      "Provide a visual or form-based workflow builder with at least trigger, condition, approval, notification, and status-update steps.",
+      "Support at least three sample workflows from start to completion.",
+      "Allow role-based approval steps and escalation after a deadline.",
+      "Show current state, responsible person/role, and action history for every request.",
+      "Permit administrators to change a workflow version without corrupting already-running requests.",
+      "Provide exportable audit logs."
+    ],
+    "constraints": [
+      "The demo should use synthetic or non-sensitive data.",
+      "High-impact actions must require explicit approval rather than silent automation.",
+      "The builder should be understandable to a non-programmer after a short introduction."
+    ],
+    "deliverables": [
+      "Working no-code workflow builder and runtime.",
+      "Three complete sample academic workflows.",
+      "Role/approval model and audit history.",
+      "Usability demonstration and setup documentation."
+    ],
+    "evaluation": [
+      "Workflow-builder usability - 25%",
+      "Execution reliability - 25%",
+      "Approval/audit controls - 20%",
+      "Flexibility across use cases - 15%",
+      "Product polish and maintainability - 15%"
+    ]
+  }
+]
