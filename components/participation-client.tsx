@@ -155,37 +155,43 @@ export function ParticipationClient() {
     let active = true;
 
     supabase.auth.getSession().then(({ data }) => {
-      if (active) setSession(data.session);
+      if (!active) return;
+
+      setSession(data.session);
+      if (data.session?.user) {
+        void refreshTeam(data.session.user.id);
+      }
     });
 
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, nextSession) => {
       setSession(nextSession);
+
+      if (nextSession?.user) {
+        void refreshTeam(nextSession.user.id);
+      } else {
+        setTeam(null);
+        setMembers([]);
+        setProblemSlug("");
+      }
     });
 
     return () => {
       active = false;
       subscription.unsubscribe();
     };
-  }, []);
+  }, [refreshTeam]);
 
   useEffect(() => {
     if (!user) return;
-
-    const initialRefresh = window.setTimeout(() => {
-      void refreshTeam(user.id);
-    }, 0);
 
     const onVisible = () => {
       if (document.visibilityState === "visible") void refreshTeam(user.id, true);
     };
 
     document.addEventListener("visibilitychange", onVisible);
-    return () => {
-      window.clearTimeout(initialRefresh);
-      document.removeEventListener("visibilitychange", onVisible);
-    };
+    return () => document.removeEventListener("visibilitychange", onVisible);
   }, [refreshTeam, user]);
 
   async function handleAuth(event: FormEvent<HTMLFormElement>) {
