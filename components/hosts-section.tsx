@@ -1,3 +1,4 @@
+import { BrandLogo } from "@/components/brand-logos";
 import { eventContent } from "@/data/event";
 
 export function HostsSection() {
@@ -7,10 +8,9 @@ export function HostsSection() {
         <p className="eyebrow">Jointly hosted by</p>
         <h2 id="hosts-heading">Our Hosts</h2>
         <div className="hosts-grid">
-          {eventContent.hosts.map((host, index) => (
+          {eventContent.hosts.map((host) => (
             <article className="host-card" key={host.name}>
-              <span className={`host-monogram host-${index + 1}`} aria-hidden="true">{host.name.slice(0, 1)}</span>
-              <h3>{host.name}</h3>
+              <BrandLogo brand={host.name} className="host-brand" />
               <p>{host.description}</p>
             </article>
           ))}
