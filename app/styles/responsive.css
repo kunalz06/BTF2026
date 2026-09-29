@@ -1,0 +1,66 @@
+@media (max-width: 960px) {
+  :root { --shell: min(100% - 32px, 860px); }
+  .hero { min-height: auto; padding-bottom: 60px; }
+  .hero-layout, .split-layout, .faq-layout { grid-template-columns: 1fr; }
+  .hero-visual { min-height: 420px; }
+  .section-copy, .faq-heading { position: static; }
+  .highlight-grid, .info-grid { grid-template-columns: repeat(2, 1fr); }
+  .feature-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .rules-grid { grid-template-columns: repeat(2, 1fr); }
+  .closing-content { align-items: start; flex-direction: column; }
+}
+
+@media (max-width: 760px) {
+  html { scroll-padding-top: 72px; }
+  .section { padding: 76px 0; }
+  .nav-shell { grid-template-columns: 1fr auto; gap: 12px; min-height: 64px; }
+  .desktop-nav, .desktop-cta { display: none; }
+  .mobile-nav { display: block; }
+  .mobile-nav summary { padding: 9px 12px; border: 1px solid rgba(255,255,255,.14); border-radius: 10px; color: #d8e4f7; cursor: pointer; font-size: .8rem; font-weight: 800; list-style: none; }
+  .mobile-nav summary::-webkit-details-marker { display: none; }
+  .mobile-nav nav { position: absolute; top: calc(100% + 10px); right: 0; width: min(270px, calc(100vw - 32px)); padding: 12px; border: 1px solid rgba(255,255,255,.1); border-radius: 15px; background: rgba(8,13,25,.98); box-shadow: 0 24px 70px rgba(0,0,0,.45); }
+  .mobile-nav nav a { display: block; padding: 11px 10px; color: #c4cfe1; font-size: .86rem; font-weight: 700; }
+  .mobile-nav nav .mobile-cta { margin-top: 5px; border-radius: 10px; background: #176fff; color: white; text-align: center; }
+  .hero { padding-top: 65px; }
+  .hero-copy h1 { font-size: clamp(3rem, 15vw, 5.2rem); }
+  .hero-description { font-size: .93rem; }
+  .hero-visual { min-height: 350px; }
+  .orbit-one { width: 310px; height: 310px; }
+  .orbit-two { width: 390px; height: 390px; }
+  .future-panel { width: min(330px, 94%); padding: 25px; }
+  .cityline { bottom: 50px; transform: scale(.82); }
+  .feature-grid, .hosts-grid { grid-template-columns: 1fr; }
+  .feature-card { min-height: 220px; }
+  .feature-number { margin-bottom: 38px; }
+  .timeline { grid-template-columns: 1fr; gap: 32px; }
+  .timeline::before { top: 0; bottom: 0; left: 24px; right: auto; width: 2px; height: auto; }
+  .timeline-item { padding-left: 72px; text-align: left; }
+  .timeline-dot { position: absolute; left: 0; top: 0; margin: 0; }
+  .timeline-item > p:last-child { margin-left: 0; }
+  .section-heading-row { align-items: start; flex-direction: column; }
+  .footer-row { flex-direction: column; gap: 7px; }
+}
+
+@media (max-width: 520px) {
+  :root { --shell: calc(100% - 28px); }
+  .wordmark > span:last-child { display: none; }
+  .highlight-grid, .info-grid, .rules-grid { grid-template-columns: 1fr; }
+  .highlight-card { min-height: 86px; }
+  .info-card { min-height: 170px; }
+  .info-index { margin-bottom: 30px; }
+  .hero-actions { align-items: flex-start; flex-direction: column; }
+  .hero-meta { align-items: flex-start; flex-direction: column; }
+  .future-panel strong { font-size: 2.2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+}
+.hero-poster { position: absolute; z-index: 4; right: -18px; bottom: 24px; width: 118px; aspect-ratio: 3 / 4; object-fit: cover; border: 1px solid rgba(255,255,255,.16); border-radius: 12px; box-shadow: 0 18px 50px rgba(0,0,0,.45); transform: rotate(3deg); opacity: .9; }
+@media (max-width: 760px) { .hero-poster { right: 0; bottom: 10px; width: 92px; } }
+.error-state { min-height: 100vh; display: grid; place-items: center; padding: 32px; background: radial-gradient(circle at 50% 20%, rgba(46,121,255,.2), transparent 32%), #050914; }
+.error-state > div { max-width: 620px; text-align: center; }
+.error-state h1 { font-size: clamp(2.4rem, 7vw, 5rem); line-height: .95; letter-spacing: -.06em; }
+.error-state p:not(.eyebrow) { color: #aab5ca; }
+.error-state button { cursor: pointer; }
