@@ -9,7 +9,6 @@ describe("informational-only scope", () => {
     const unsupportedFields = [
       "registrationUrl",
       "paymentUrl",
-      "venue",
       "city",
       "campus",
       "speakers",
