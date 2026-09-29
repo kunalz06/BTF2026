@@ -32,6 +32,13 @@ export type EventContent = {
   tagline: string;
   description: string;
   date: { iso: string; display: string };
+  venue: {
+    name: string;
+    displayName: string;
+    address: string;
+    mapsUrl: string;
+    hotelUrl: string;
+  };
   paymentDeadline: { iso: string; display: string };
   durationHours: number;
   experiences: readonly string[];
@@ -74,6 +81,13 @@ export const eventContent = {
   date: {
     iso: "2026-11-01",
     display: "1 November 2026",
+  },
+  venue: {
+    name: "ITC Royal Bengal",
+    displayName: "ITC Royal Bengal, Kolkata",
+    address: "1 JBS Haldane Avenue, Kolkata 700046, West Bengal, India",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=ITC%20Royal%20Bengal%2C%201%20JBS%20Haldane%20Avenue%2C%20Kolkata%20700046%2C%20West%20Bengal%2C%20India",
+    hotelUrl: "https://www.itchotels.com/in/en/itcroyalbengal-kolkata",
   },
   paymentDeadline: {
     iso: "2026-10-02",
@@ -138,9 +152,9 @@ export const eventContent = {
   },
   keyInformation: [
     { label: "Date", value: "1 November 2026" },
+    { label: "Venue", value: "ITC Royal Bengal, Kolkata" },
     { label: "Format", value: "36-hour hackathon + industry lectures + networking" },
     { label: "Hosted by", value: "GitHub · GDG India · Google Cloud" },
-    { label: "Participation", value: "Through respective college GDG teams" },
   ],
   timeline: [
     {
@@ -194,6 +208,10 @@ export const eventContent = {
     {
       question: "How do participants pay or get more details?",
       answer: "Contact your respective college GDG team leads for payment and more details.",
+    },
+    {
+      question: "Where is the event being held?",
+      answer: "The event venue is ITC Royal Bengal, 1 JBS Haldane Avenue, Kolkata 700046, West Bengal, India.",
     },
     {
       question: "How long is the hackathon?",
