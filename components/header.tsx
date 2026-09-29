@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { BrandLogo } from "@/components/brand-logos";
 import { eventContent } from "@/data/event";
 
@@ -15,27 +16,27 @@ export function Header() {
   return (
     <header className="site-header" aria-label="Primary navigation">
       <div className="shell nav-shell">
-        <a className="brand-bar" href="/" aria-label={`${eventContent.name} home`}>
+        <Link className="brand-bar" href="/" aria-label={`${eventContent.name} home`}>
           <BrandLogo brand="GitHub" />
           <span className="brand-divider" aria-hidden="true" />
           <BrandLogo brand="GDG India" />
           <span className="brand-divider" aria-hidden="true" />
           <BrandLogo brand="Google Cloud" />
-        </a>
+        </Link>
 
         <nav className="desktop-nav" aria-label="Desktop navigation">
-          {navItems.map(([label, href]) => <a key={href} href={href}>{label}</a>)}
+          {navItems.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
         </nav>
 
-        <a className="button button-small desktop-cta" href="/#participate">
+        <Link className="button button-small desktop-cta" href="/#participate">
           Get Involved <span aria-hidden="true">→</span>
-        </a>
+        </Link>
 
         <details className="mobile-nav">
           <summary aria-label="Open navigation">Menu</summary>
           <nav aria-label="Mobile navigation">
-            {navItems.map(([label, href]) => <a key={href} href={href}>{label}</a>)}
-            <a className="mobile-cta" href="/#participate">Get Involved</a>
+            {navItems.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
+            <Link className="mobile-cta" href="/#participate">Get Involved</Link>
           </nav>
         </details>
       </div>
