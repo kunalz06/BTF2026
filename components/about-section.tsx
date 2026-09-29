@@ -1,3 +1,4 @@
+import { BrandLogo } from "@/components/brand-logos";
 import { eventContent } from "@/data/event";
 
 export function AboutSection() {
@@ -9,7 +10,7 @@ export function AboutSection() {
           <h2>{eventContent.about.heading}</h2>
           <p className="lead">{eventContent.about.body}</p>
           <div className="host-inline" aria-label="Joint hosts">
-            {eventContent.hosts.map((host) => <span key={host.name}>{host.name}</span>)}
+            {eventContent.hosts.map((host) => <BrandLogo key={host.name} brand={host.name} />)}
           </div>
         </div>
         <div className="feature-grid">
