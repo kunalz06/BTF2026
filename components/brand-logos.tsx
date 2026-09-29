@@ -16,7 +16,7 @@ type BrandLogoProps = {
 
 export function BrandLogo({ brand, className = "", label = true }: BrandLogoProps) {
   return (
-    <span className={`brand-lockup ${className}`.trim()} aria-label={brand}>
+    <span className={`brand-lockup ${className}`.trim()} aria-label={brand} data-brand={brand}>
       <span className="brand-logo-mark" aria-hidden="true">
         <img src={brandAssets[brand]} alt="" />
       </span>
