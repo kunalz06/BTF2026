@@ -53,8 +53,8 @@ h3 { line-height: 1.22; }
 .brand-bar { display: inline-flex; align-items: center; gap: 12px; min-width: 0; }
 .brand-bar .brand-lockup { color: #fff; }
 .brand-divider { width: 1px; height: 22px; background: rgba(255,255,255,.22); }
-.desktop-nav { display: flex; justify-content: center; gap: clamp(16px, 2.2vw, 30px); }
-.desktop-nav a { position: relative; padding: 25px 0 22px; color: #b7c2d5; font-size: .78rem; font-weight: 700; }
+.desktop-nav { display: flex; justify-content: center; gap: clamp(12px, 1.8vw, 24px); }
+.desktop-nav a { position: relative; padding: 25px 0 22px; color: #b7c2d5; font-size: .75rem; font-weight: 700; }
 .desktop-nav a::after { content: ""; position: absolute; right: 0; bottom: 16px; left: 0; height: 2px; transform: scaleX(0); background: linear-gradient(90deg, var(--blue), var(--purple)); transition: transform .2s ease; }
 .desktop-nav a:hover { color: #fff; }
 .desktop-nav a:hover::after { transform: scaleX(1); }
