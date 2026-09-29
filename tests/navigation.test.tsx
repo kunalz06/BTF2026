@@ -15,9 +15,17 @@ describe("single-page navigation", () => {
     const ctas = screen.getAllByRole("link", { name: /get involved/i });
     expect(ctas.length).toBeGreaterThan(0);
     for (const cta of ctas) {
-      expect(cta).toHaveAttribute("href", "#participate");
+      expect(cta).toHaveAttribute("href", "/#participate");
     }
     expect(screen.queryByRole("button", { name: /checkout|pay|register/i })).not.toBeInTheDocument();
+  });
+
+  it("links to the problem statements page", () => {
+    render(<HomePage />);
+    expect(screen.getAllByRole("link", { name: "Problems" })[0]).toHaveAttribute(
+      "href",
+      "/problem-statements",
+    );
   });
 
   it("renders partner logos throughout the site", () => {
