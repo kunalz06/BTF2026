@@ -4,7 +4,7 @@ import { eventContent } from "@/data/event";
 
 const ordered = [
   eventContent.keyInformation.find((item) => item.label === "Date")!,
-  eventContent.keyInformation.find((item) => item.label === "Participation")!,
+  eventContent.keyInformation.find((item) => item.label === "Venue")!,
   eventContent.keyInformation.find((item) => item.label === "Format")!,
   eventContent.keyInformation.find((item) => item.label === "Hosted by")!,
 ];
@@ -29,6 +29,18 @@ export function KeyInformation() {
               {item.label === "Hosted by" ? (
                 <div className="info-hosts">
                   {eventContent.hosts.map((host) => <BrandLogo key={host.name} brand={host.name} />)}
+                </div>
+              ) : item.label === "Venue" ? (
+                <div className="info-venue">
+                  <strong>{eventContent.venue.displayName}</strong>
+                  <span>{eventContent.venue.address}</span>
+                  <a
+                    href={eventContent.venue.mapsUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Open in Maps <span aria-hidden="true">↗</span>
+                  </a>
                 </div>
               ) : (
                 <p>{item.value}</p>
