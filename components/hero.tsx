@@ -23,7 +23,17 @@ export function Hero() {
 
           <div className="hero-meta" aria-label="Event quick facts">
             <div><EventIcon name="calendar" /><span>{eventContent.date.display}</span></div>
-            <div><EventIcon name="pin" /><span>Details via college GDG teams</span></div>
+            <a
+              className="hero-meta-location"
+              href={eventContent.venue.mapsUrl}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`Open ${eventContent.venue.displayName} in Maps`}
+            >
+              <EventIcon name="pin" />
+              <span>{eventContent.venue.displayName}</span>
+              <b aria-hidden="true">↗</b>
+            </a>
           </div>
 
           <div className="hero-actions">
