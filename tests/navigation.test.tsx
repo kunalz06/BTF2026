@@ -28,6 +28,14 @@ describe("single-page navigation", () => {
     );
   });
 
+  it("links to the colleges page", () => {
+    render(<HomePage />);
+    expect(screen.getAllByRole("link", { name: "Colleges" })[0]).toHaveAttribute(
+      "href",
+      "/colleges",
+    );
+  });
+
   it("renders partner logos throughout the site", () => {
     render(<HomePage />);
     for (const brand of ["GitHub", "GDG India", "Google Cloud"]) {
