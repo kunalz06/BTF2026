@@ -26,7 +26,7 @@ export function Hero() {
           </div>
 
           <div className="hero-actions">
-            <a className="button" href="#participate">Get Involved <span aria-hidden="true">→</span></a>
+            <a className="button" href="/#participate">Get Involved <span aria-hidden="true">→</span></a>
             <a className="text-link" href="#rules">View participation rules <span aria-hidden="true">↘</span></a>
           </div>
         </div>
