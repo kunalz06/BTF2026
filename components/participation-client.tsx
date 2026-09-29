@@ -173,14 +173,19 @@ export function ParticipationClient() {
   useEffect(() => {
     if (!user) return;
 
-    void refreshTeam(user.id);
+    const initialRefresh = window.setTimeout(() => {
+      void refreshTeam(user.id);
+    }, 0);
 
     const onVisible = () => {
       if (document.visibilityState === "visible") void refreshTeam(user.id, true);
     };
 
     document.addEventListener("visibilitychange", onVisible);
-    return () => document.removeEventListener("visibilitychange", onVisible);
+    return () => {
+      window.clearTimeout(initialRefresh);
+      document.removeEventListener("visibilitychange", onVisible);
+    };
   }, [refreshTeam, user]);
 
   async function handleAuth(event: FormEvent<HTMLFormElement>) {
