@@ -10,7 +10,10 @@ export type EventIconName =
   | "document"
   | "crown"
   | "rupee"
-  | "info"\n  | "drone"\n  | "brain"\n  | "automation";
+  | "info"
+  | "drone"
+  | "brain"
+  | "automation";
 
 export function EventIcon({ name, className = "" }: { name: EventIconName; className?: string }) {
   const common = { fill: "none", stroke: "currentColor", strokeWidth: 1.9, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
