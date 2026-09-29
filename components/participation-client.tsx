@@ -171,11 +171,7 @@ export function ParticipationClient() {
   }, []);
 
   useEffect(() => {
-    if (!user) {
-      setTeam(null);
-      setMembers([]);
-      return;
-    }
+    if (!user) return;
 
     void refreshTeam(user.id);
 
