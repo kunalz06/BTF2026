@@ -21,10 +21,15 @@ export function Header() {
           <span className="brand-divider" aria-hidden="true" />
           <BrandLogo brand="Google Cloud" />
         </a>
+
         <nav className="desktop-nav" aria-label="Desktop navigation">
           {navItems.map(([label, href]) => <a key={href} href={href}>{label}</a>)}
         </nav>
-        <a className="button button-small desktop-cta" href="#participate">Get Involved</a>
+
+        <a className="button button-small desktop-cta" href="#participate">
+          Get Involved <span aria-hidden="true">→</span>
+        </a>
+
         <details className="mobile-nav">
           <summary aria-label="Open navigation">Menu</summary>
           <nav aria-label="Mobile navigation">

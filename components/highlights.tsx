@@ -1,6 +1,7 @@
+import { EventIcon, type EventIconName } from "@/components/event-icons";
 import { eventContent } from "@/data/event";
 
-const symbols = ["</>", "✦", "◎", "↗"];
+const iconMap: EventIconName[] = ["code", "users", "network", "trophy"];
 
 export function Highlights() {
   return (
@@ -8,8 +9,11 @@ export function Highlights() {
       <div className="shell highlight-grid">
         {eventContent.highlights.map((item, index) => (
           <article className={`highlight-card accent-${item.accent}`} key={item.title}>
-            <span className="highlight-symbol" aria-hidden="true">{symbols[index]}</span>
-            <div><strong>{item.title}</strong><span>{item.subtitle}</span></div>
+            <span className="highlight-symbol"><EventIcon name={iconMap[index]} /></span>
+            <div>
+              <strong>{item.title}</strong>
+              <span>{item.subtitle}</span>
+            </div>
           </article>
         ))}
       </div>

@@ -5,7 +5,7 @@ export function FaqSection() {
     <section className="section faq-section" id="faq">
       <div className="shell faq-layout">
         <div className="faq-heading">
-          <p className="eyebrow eyebrow-blue">FAQ</p>
+          <p className="eyebrow">FAQ</p>
           <h2>Questions, answered.</h2>
           <p>Only confirmed event information is shown here.</p>
         </div>
