@@ -17,6 +17,11 @@ describe("verified event content", () => {
     expect(eventContent.team.leadRule).toBe("One member must be selected as team lead");
     expect(eventContent.fee.display).toBe("₹4,500 per participant");
     expect(eventContent.paymentDeadline.display).toBe("2 October 2026");
+    expect(eventContent.venue.displayName).toBe("ITC Royal Bengal, Kolkata");
+    expect(eventContent.venue.address).toBe(
+      "1 JBS Haldane Avenue, Kolkata 700046, West Bengal, India",
+    );
+    expect(eventContent.venue.mapsUrl).toContain("google.com/maps/search");
     expect(eventContent.participationGuidance).toContain("respective college GDG team leads");
   });
 
@@ -36,8 +41,9 @@ describe("page metadata", () => {
     expect(metadata.title).toBe("BUILD THE FUTURE HACKATHON 2026");
     expect(metadata.description).toContain("1 November 2026");
     expect(metadata.description).toContain("36-hour hackathon");
+    expect(metadata.description).toContain("ITC Royal Bengal");
     const serialized = JSON.stringify(metadata).toLowerCase();
-    for (const unsupported of ["venue", "speaker", "prize", "register now"]) {
+    for (const unsupported of ["speaker", "prize", "register now"]) {
       expect(serialized).not.toContain(unsupported);
     }
   });
