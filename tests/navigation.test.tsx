@@ -19,4 +19,11 @@ describe("single-page navigation", () => {
     }
     expect(screen.queryByRole("button", { name: /checkout|pay|register/i })).not.toBeInTheDocument();
   });
+
+  it("renders partner logos throughout the site", () => {
+    render(<HomePage />);
+    for (const brand of ["GitHub", "GDG India", "Google Cloud"]) {
+      expect(screen.getAllByLabelText(brand).length).toBeGreaterThanOrEqual(4);
+    }
+  });
 });
