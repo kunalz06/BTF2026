@@ -1,0 +1,22 @@
+import { eventContent } from "@/data/event";
+
+export function TimelineSection() {
+  return (
+    <section className="section timeline-section" id="timeline">
+      <div className="shell">
+        <p className="eyebrow eyebrow-blue">Important dates</p>
+        <h2>Event Timeline</h2>
+        <div className="timeline" role="list">
+          {eventContent.timeline.map((item, index) => (
+            <article className="timeline-item" role="listitem" key={item.title}>
+              <div className="timeline-dot" aria-hidden="true">{index + 1}</div>
+              <p className="timeline-value">{item.value}</p>
+              <h3>{item.title}</h3>
+              <p>{item.detail}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
