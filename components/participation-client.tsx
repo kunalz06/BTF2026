@@ -546,7 +546,6 @@ export function ParticipationClient() {
             <PresentationUpload
               teamId={team.id}
               teamCode={team.team_code}
-              userId={user.id}
             />
           </>
         ) : (
