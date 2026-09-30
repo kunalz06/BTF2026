@@ -776,3 +776,210 @@
 .problem-empty-state svg {
   color: #8ab4f8;
 }
+
+
+.team-presentation-card {
+  margin-top: 16px;
+  padding: 26px;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 18px;
+  background: linear-gradient(155deg,#111820,#0b1016);
+  box-shadow: 0 26px 70px rgba(0,0,0,.18);
+}
+
+.presentation-deadline {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 14px;
+  border: 1px solid rgba(251,188,5,.2);
+  border-radius: 12px;
+  background: rgba(251,188,5,.06);
+}
+
+.presentation-deadline > svg {
+  width: 23px;
+  height: 23px;
+  flex: 0 0 auto;
+  color: #fdd663;
+}
+
+.presentation-deadline strong,
+.presentation-deadline span {
+  display: block;
+}
+
+.presentation-deadline strong {
+  margin-bottom: 2px;
+  color: #f8e09a;
+  font-size: .78rem;
+}
+
+.presentation-deadline span {
+  color: #948765;
+  font-size: .66rem;
+}
+
+.presentation-loading {
+  padding: 18px;
+  border: 1px dashed rgba(255,255,255,.09);
+  border-radius: 12px;
+  color: #7f8fa5;
+  font-size: .75rem;
+}
+
+.presentation-status,
+.presentation-empty {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 16px;
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 12px;
+  background: rgba(255,255,255,.025);
+}
+
+.presentation-status {
+  border-color: rgba(52,168,83,.22);
+  background: rgba(52,168,83,.055);
+}
+
+.presentation-status-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  border-radius: 11px;
+  color: #81c995;
+  background: rgba(52,168,83,.1);
+}
+
+.presentation-status-icon svg,
+.presentation-empty > svg {
+  width: 22px;
+  height: 22px;
+}
+
+.presentation-status strong,
+.presentation-status span,
+.presentation-status small,
+.presentation-empty strong,
+.presentation-empty span {
+  display: block;
+}
+
+.presentation-status strong,
+.presentation-empty strong {
+  color: #dbe5f4;
+  font-size: .78rem;
+}
+
+.presentation-status span,
+.presentation-empty span {
+  margin-top: 3px;
+  color: #7d8ca2;
+  font-size: .68rem;
+}
+
+.presentation-status small {
+  margin-top: 4px;
+  color: #5f7087;
+  font-size: .62rem;
+}
+
+.presentation-empty {
+  align-items: flex-start;
+}
+
+.presentation-empty > svg {
+  flex: 0 0 auto;
+  color: #8ab4f8;
+}
+
+.presentation-upload-form {
+  display: grid;
+  gap: 12px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,.07);
+}
+
+.presentation-upload-form > label {
+  color: #aab8cc;
+  font-size: .7rem;
+  font-weight: 800;
+}
+
+.presentation-upload-form input[type="file"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px dashed rgba(66,133,244,.3);
+  border-radius: 11px;
+  background: rgba(66,133,244,.045);
+  color: #9eacc0;
+  font: inherit;
+  font-size: .72rem;
+}
+
+.presentation-upload-form input[type="file"]::file-selector-button {
+  margin-right: 10px;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: 8px;
+  background: #4285f4;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: .68rem;
+  font-weight: 800;
+}
+
+.presentation-selected-file {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 9px;
+  align-items: center;
+  color: #aab8cc;
+  font-size: .7rem;
+}
+
+.presentation-selected-file svg {
+  width: 17px;
+  height: 17px;
+  color: #8ab4f8;
+}
+
+.presentation-selected-file small {
+  color: #697a91;
+}
+
+.presentation-upload-form .button {
+  width: max-content;
+}
+
+.presentation-upload-note {
+  margin: 0;
+  color: #66778d;
+  font-size: .64rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 620px) {
+  .team-presentation-card {
+    padding: 20px;
+  }
+
+  .presentation-upload-form .button {
+    width: 100%;
+  }
+
+  .presentation-selected-file {
+    grid-template-columns: auto 1fr;
+  }
+
+  .presentation-selected-file small {
+    grid-column: 2;
+  }
+}
