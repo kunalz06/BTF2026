@@ -85,3 +85,16 @@
 .error-state h1 { font-size: clamp(2.4rem,7vw,5rem); line-height: .95; letter-spacing: -.06em; }
 .error-state p:not(.eyebrow) { color: #aab5ca; }
 .error-state button { cursor: pointer; }
+
+/* Google palette refresh */
+@media (max-width: 760px) {
+  .mobile-nav nav .mobile-cta {
+    background: #4285f4;
+  }
+}
+.error-state {
+  background:
+    radial-gradient(circle at 42% 20%,rgba(66,133,244,.18),transparent 30%),
+    radial-gradient(circle at 60% 20%,rgba(234,67,53,.10),transparent 24%),
+    #07090d;
+}
