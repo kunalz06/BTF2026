@@ -93,7 +93,7 @@ export function PresentationUpload({
     return () => {
       active = false;
     };
-  }, [teamId]);
+  }, [onStatusChange, teamId]);
 
   function handleFile(event: ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0] ?? null;
