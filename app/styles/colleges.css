@@ -409,3 +409,61 @@
 @media (max-width: 480px) {
   .college-actions { align-items: flex-start; flex-direction: column; }
 }
+
+/* Google palette refresh */
+.colleges-hero {
+  background:
+    radial-gradient(circle at 78% 26%, rgba(66,133,244,.18), transparent 26%),
+    radial-gradient(circle at 88% 78%, rgba(234,67,53,.09), transparent 30%),
+    linear-gradient(135deg,#07090d,#0b1118 68%,#10151c);
+}
+.colleges-hero h1 strong {
+  color: transparent;
+  background: linear-gradient(90deg,#4285f4 0%,#4285f4 28%,#ea4335 48%,#fbbc05 68%,#34a853 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+.colleges-hero-mark > .brand-lockup {
+  border-color: rgba(66,133,244,.28);
+  background: radial-gradient(circle,rgba(66,133,244,.14),rgba(8,18,36,.62) 62%,rgba(6,12,23,.82));
+  box-shadow: 0 0 90px rgba(66,133,244,.16);
+}
+.colleges-orbit-one { border-color: rgba(66,133,244,.24); }
+.colleges-orbit-two { border-color: rgba(234,67,53,.18); }
+.colleges-hero-pin {
+  border-color: rgba(66,133,244,.35);
+  color: #8ab4f8;
+}
+.external-college-rule-card {
+  border-color: rgba(251,188,5,.30);
+  background:
+    radial-gradient(circle at 0 0,rgba(251,188,5,.08),transparent 24%),
+    linear-gradient(145deg,#11161d,#0b1016);
+}
+.external-college-icon {
+  color: #fdd663;
+  background: rgba(251,188,5,.10);
+}
+.college-region-nav a:hover {
+  border-color: rgba(66,133,244,.42);
+}
+.college-region-nav span {
+  background: rgba(66,133,244,.11);
+  color: #8ab4f8;
+}
+.college-gdg-badge {
+  border-color: rgba(66,133,244,.18);
+  background: rgba(66,133,244,.08);
+  color: #8ab4f8;
+}
+.college-location svg,
+.college-source-note svg {
+  color: #8ab4f8;
+}
+.college-actions a:hover {
+  color: #8ab4f8;
+}
+.college-card:nth-child(4n+1) { border-top: 2px solid rgba(66,133,244,.46); }
+.college-card:nth-child(4n+2) { border-top: 2px solid rgba(234,67,53,.46); }
+.college-card:nth-child(4n+3) { border-top: 2px solid rgba(251,188,5,.46); }
+.college-card:nth-child(4n+4) { border-top: 2px solid rgba(52,168,83,.46); }
