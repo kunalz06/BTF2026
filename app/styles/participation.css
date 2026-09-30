@@ -983,3 +983,169 @@
     grid-column: 2;
   }
 }
+
+
+.team-progress-card {
+  margin-bottom: 16px;
+  padding: 26px;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 92% 0,rgba(66,133,244,.08),transparent 26%),
+    linear-gradient(155deg,#101820,#0a1016);
+  box-shadow: 0 24px 60px rgba(0,0,0,.16);
+}
+
+.team-progress-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 22px;
+  align-items: end;
+  margin-bottom: 18px;
+}
+
+.team-progress-heading h3 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.team-progress-heading > strong {
+  color: #8ab4f8;
+  font-size: .72rem;
+  font-weight: 850;
+}
+
+.team-progress-checklist {
+  display: grid;
+  gap: 9px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.team-progress-checklist li {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 13px;
+  align-items: center;
+  min-height: 68px;
+  padding: 13px 14px;
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 12px;
+  background: rgba(255,255,255,.022);
+}
+
+.team-progress-checklist li.completed {
+  border-color: rgba(52,168,83,.22);
+  background: rgba(52,168,83,.055);
+}
+
+.team-progress-check {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 50%;
+  background: rgba(255,255,255,.035);
+  color: #7e8da3;
+  font-size: .68rem;
+  font-weight: 900;
+}
+
+.team-progress-checklist li.completed .team-progress-check {
+  border-color: rgba(52,168,83,.3);
+  background: rgba(52,168,83,.11);
+  color: #81c995;
+}
+
+.team-progress-check svg {
+  width: 20px;
+  height: 20px;
+}
+
+.team-progress-checklist li > div > strong,
+.team-progress-checklist li > div > span {
+  display: block;
+}
+
+.team-progress-checklist li > div > strong {
+  color: #dce6f4;
+  font-size: .78rem;
+}
+
+.team-progress-checklist li > div > span {
+  margin-top: 3px;
+  color: #728299;
+  font-size: .66rem;
+}
+
+.team-progress-checklist li > b {
+  padding: 6px 8px;
+  border-radius: 999px;
+  background: rgba(251,188,5,.08);
+  color: #fdd663;
+  font-size: .58rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+
+.team-progress-checklist li.completed > b {
+  background: rgba(52,168,83,.09);
+  color: #81c995;
+}
+
+.presentation-leader-only {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 15px;
+  border: 1px solid rgba(66,133,244,.16);
+  border-radius: 12px;
+  background: rgba(66,133,244,.05);
+}
+
+.presentation-leader-only > svg {
+  width: 21px;
+  height: 21px;
+  flex: 0 0 auto;
+  color: #8ab4f8;
+}
+
+.presentation-leader-only strong,
+.presentation-leader-only span {
+  display: block;
+}
+
+.presentation-leader-only strong {
+  margin-bottom: 3px;
+  color: #dce6f4;
+  font-size: .75rem;
+}
+
+.presentation-leader-only span {
+  color: #75869d;
+  font-size: .67rem;
+}
+
+@media (max-width: 620px) {
+  .team-progress-card {
+    padding: 20px;
+  }
+
+  .team-progress-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .team-progress-checklist li {
+    grid-template-columns: auto 1fr;
+  }
+
+  .team-progress-checklist li > b {
+    grid-column: 2;
+    width: max-content;
+  }
+}
