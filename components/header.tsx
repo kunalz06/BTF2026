@@ -5,10 +5,9 @@ import { eventContent } from "@/data/event";
 const navItems = [
   ["Home", "/#home"],
   ["About", "/#about"],
-  ["Event", "/#event"],
+  ["Event Details", "/event-details"],
   ["Problems", "/problem-statements"],
   ["Colleges", "/colleges"],
-  ["Timeline", "/#timeline"],
   ["Rules", "/#rules"],
   ["FAQ", "/#faq"],
 ] as const;
