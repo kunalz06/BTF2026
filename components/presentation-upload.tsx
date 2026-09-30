@@ -64,8 +64,28 @@ export function PresentationUpload({
   }, [teamId]);
 
   useEffect(() => {
-    void refresh();
-  }, [refresh]);
+    let active = true;
+
+    supabase
+      .from("btf_team_presentations")
+      .select("team_id, original_filename, file_bytes, file_format, uploaded_by, uploaded_at, secure_url")
+      .eq("team_id", teamId)
+      .maybeSingle()
+      .then(({ data, error }) => {
+        if (!active) return;
+
+        if (error) {
+          setMessage({ tone: "error", text: error.message });
+        } else {
+          setPresentation(data as PresentationRow | null);
+        }
+        setLoading(false);
+      });
+
+    return () => {
+      active = false;
+    };
+  }, [teamId]);
 
   function handleFile(event: ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0] ?? null;
