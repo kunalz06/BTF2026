@@ -10,6 +10,7 @@ import {
   useState,
 } from "react";
 import { EventIcon } from "@/components/event-icons";
+import { PresentationUpload } from "@/components/presentation-upload";
 import { problemStatements, problemTracks } from "@/data/problem-statements";
 import {
   isValidParticipantName,
@@ -528,19 +529,26 @@ export function ParticipationClient() {
         {loadingTeam ? (
           <div className="participation-loading participation-loading-card">Loading your team…</div>
         ) : team ? (
-          <TeamDashboard
-            team={team}
-            members={members}
-            userId={user.id}
-            isLeader={isLeader}
-            selectedProblem={selectedProblem}
-            problemSlug={problemSlug}
-            setProblemSlug={setProblemSlug}
-            busyAction={busyAction}
-            copied={copied}
-            copyTeamCode={copyTeamCode}
-            handleProblemSelection={handleProblemSelection}
-          />
+          <>
+            <TeamDashboard
+              team={team}
+              members={members}
+              userId={user.id}
+              isLeader={isLeader}
+              selectedProblem={selectedProblem}
+              problemSlug={problemSlug}
+              setProblemSlug={setProblemSlug}
+              busyAction={busyAction}
+              copied={copied}
+              copyTeamCode={copyTeamCode}
+              handleProblemSelection={handleProblemSelection}
+            />
+            <PresentationUpload
+              teamId={team.id}
+              teamCode={team.team_code}
+              userId={user.id}
+            />
+          </>
         ) : (
           <div className="no-team-area">
             <div className="portal-section-heading">
