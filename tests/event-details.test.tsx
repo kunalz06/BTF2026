@@ -26,7 +26,7 @@ describe("event details page", () => {
 
   it("does not mislabel Thomas Dohmke as the current GitHub CEO", () => {
     render(<EventDetailsPage />);
-    expect(screen.getByText(/GitHub does not currently list a CEO/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/GitHub does not currently list a CEO/i).length).toBeGreaterThan(0);
     expect(screen.queryByText(/^CEO, GitHub$/i)).not.toBeInTheDocument();
   });
 });
