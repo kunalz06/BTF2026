@@ -55,13 +55,13 @@ export default function CollegesPage() {
             <span className="external-college-icon"><EventIcon name="network" /></span>
             <div>
               <p className="eyebrow">Your college does not have a GDG?</p>
-              <h2>Contact the nearest college GDG to participate.</h2>
+              <h2>Use the portal first, then contact the nearest college GDG for payment.</h2>
               <p>
-                If your team&apos;s college does not have a GDG on Campus, your team must contact
-                the nearest college listed on this page that has a GDG. That college&apos;s GDG
-                team will guide your team through participation and registration for this event.
-                Use the attached location button to identify the closest chapter, then open its
-                official GDG page to contact the organizers.
+                Registration and team formation are completed through the Participation portal for
+                every team. If your college does not have a GDG on Campus, contact the nearest
+                college listed on this page that has a GDG for payment coordination and event
+                guidance. Use the attached location button to identify the closest chapter, then
+                open its official GDG page to contact the organizers.
               </p>
             </div>
           </div>
