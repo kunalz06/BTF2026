@@ -69,7 +69,7 @@ export default function EventDetailsPage() {
                 <p className="eyebrow">30 October 2026</p>
                 <h3>Project Presentation</h3>
                 <strong>Upload deadline</strong>
-                <p>Each team must upload its project presentation through the Participation portal by this date.</p>
+                <p>The team leader must upload the team project presentation through the Participation portal by this date.</p>
               </article>
 
               <article className="event-logistics-card event-logistics-blue">
