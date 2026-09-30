@@ -19,7 +19,6 @@ begin
     coalesce((new.raw_user_meta_data ->> 'btf_participant')::boolean, false);
 
   if not v_is_participant then
-    delete from public.btf_participants where user_id = new.id;
     return new;
   end if;
 
