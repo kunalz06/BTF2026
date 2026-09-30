@@ -103,14 +103,14 @@ export const eventContent = {
   team: {
     minMembers: 2,
     maxMembers: 6,
-    leadRule: "One member must be selected as team lead",
+    leadRule: "The participant who creates the team becomes the team lead by default",
   },
   fee: {
     amountInr: 4500,
     display: "₹4,500 per participant",
   },
   participationGuidance:
-    "For payment and more details, contact your respective college GDG team leads.",
+    "Create your account and complete team formation through the Participation portal. Payment remains offline through your respective campus GDG head.",
   hosts: [
     {
       name: "GitHub",
@@ -158,31 +158,32 @@ export const eventContent = {
   ],
   timeline: [
     {
+      title: "Registration & Team Formation",
+      value: "Participation Portal",
+      detail: "Create your account, create or join one team, and select your team's problem statement through the website.",
+    },
+    {
       title: "Payment Deadline",
       value: "2 October 2026",
-      detail: "Complete payment through your respective college GDG team lead.",
+      detail: "Complete the ₹4,500 per-participant payment through your respective campus GDG head.",
     },
     {
       title: "Event Date",
       value: "1 November 2026",
-      detail: "The hackathon plus event begins on this date.",
-    },
-    {
-      title: "Contact College GDG Team Leads",
-      value: "Payment and more details",
-      detail: "Your respective college GDG team lead is the participation contact point.",
+      detail: "The hackathon plus event begins at ITC Royal Bengal, Kolkata.",
     },
   ],
   rules: [
     { title: "Eligibility", value: "College students only" },
+    { title: "Account Registration", value: "Every participant creates an individual account through the Participation portal" },
+    { title: "Team Formation", value: "Create a new team or join an existing team through the Participation portal using the 7-character team ID" },
     { title: "Team Size", value: "Minimum 2 members · Maximum 6 members" },
-    { title: "Team Lead", value: "One member must be selected as team lead" },
+    { title: "Membership", value: "A participant can be part of only one team" },
+    { title: "Team Lead", value: "The participant who creates the team becomes the team lead by default" },
+    { title: "Problem Statement", value: "Each team must select exactly one problem statement through the portal" },
     { title: "Registration Fee", value: "₹4,500 per participant" },
+    { title: "Payment", value: "Payment is completed through the respective campus GDG head, not through the web portal" },
     { title: "Payment Deadline", value: "2 October 2026" },
-    {
-      title: "Payment & Details",
-      value: "Contact your respective college GDG team leads",
-    },
   ],
   faq: [
     {
@@ -194,8 +195,20 @@ export const eventContent = {
       answer: "Each team must have at least 2 members and can have up to 6 members.",
     },
     {
+      question: "How do I register for the hackathon?",
+      answer: "Create your participant account on the Participation portal, then create a new team or join an existing team using its 7-character team ID.",
+    },
+    {
       question: "Does every team need a team lead?",
-      answer: "Yes. One member of each team must be selected as the team lead.",
+      answer: "Yes. The participant who creates the team becomes the team lead by default.",
+    },
+    {
+      question: "Can one participant join more than one team?",
+      answer: "No. Each participant account can belong to only one team.",
+    },
+    {
+      question: "How is a problem statement selected?",
+      answer: "Each team must select exactly one problem statement through the Participation portal. The team leader manages the team's problem selection.",
     },
     {
       question: "What is the registration fee?",
@@ -206,8 +219,12 @@ export const eventContent = {
       answer: "The last date of payment is 2 October 2026.",
     },
     {
-      question: "How do participants pay or get more details?",
-      answer: "Contact your respective college GDG team leads for payment and more details.",
+      question: "How is the registration fee paid?",
+      answer: "The ₹4,500 per-participant payment is not collected through the web portal. Complete payment through your respective campus GDG head by 2 October 2026.",
+    },
+    {
+      question: "What if my college does not have a GDG on Campus?",
+      answer: "Complete registration and team formation through the Participation portal, then contact the nearest listed college GDG for payment coordination.",
     },
     {
       question: "Where is the event being held?",
@@ -220,7 +237,7 @@ export const eventContent = {
   ],
   cta: {
     heading: "Are you ready to build the future?",
-    body: "Contact your respective college GDG team lead for payment and participation details.",
-    actionLabel: "Contact Your College GDG Team",
+    body: "Create your account and form or join your team through the Participation portal. Complete the registration fee separately through your campus GDG head.",
+    actionLabel: "Open Participation Portal",
   },
 } as const satisfies EventContent;
