@@ -44,6 +44,12 @@ describe("single-page navigation", () => {
     );
   });
 
+  it("links to the legal pages from the footer", () => {
+    render(<HomePage />);
+    expect(screen.getByRole("link", { name: "Privacy Policy" })).toHaveAttribute("href", "/privacy");
+    expect(screen.getByRole("link", { name: "Terms" })).toHaveAttribute("href", "/terms");
+  });
+
   it("renders partner logos throughout the site", () => {
     render(<HomePage />);
     for (const brand of ["GitHub", "GDG India", "Google Cloud"]) {
