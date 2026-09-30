@@ -32,6 +32,20 @@ export type EventContent = {
   tagline: string;
   description: string;
   date: { iso: string; display: string };
+  reporting: {
+    iso: string;
+    display: string;
+    time: string;
+    fullDisplay: string;
+  };
+  foodIncluded: boolean;
+  prizes: {
+    featuredTopTeamPrizeInr: number;
+    featuredTopTeamPrizeDisplay: string;
+    featuredTopTeamPrizeScope: string;
+    totalPrizePoolInr: number;
+    totalPrizePoolDisplay: string;
+  };
   venue: {
     name: string;
     displayName: string;
@@ -77,10 +91,24 @@ export const eventContent = {
   eyebrow: "Annual Hackathon Plus Event",
   tagline: "Innovate. Collaborate. Build what's next.",
   description:
-    "An annual hackathon plus event jointly hosted by GitHub, GDG India, and Google Cloud, bringing college students together for expert lectures, networking, and 36 hours of collaborative building.",
+    "An annual hackathon plus event jointly hosted by GitHub, GDG India, and Google Cloud, bringing college students together for industry sessions, networking, food, prizes, and 36 hours of collaborative building. Teams report on 31 October 2026 and the main event is on 1 November 2026.",
   date: {
     iso: "2026-11-01",
     display: "1 November 2026",
+  },
+  reporting: {
+    iso: "2026-10-31T16:00:00+05:30",
+    display: "31 October 2026",
+    time: "4:00 PM",
+    fullDisplay: "31 October 2026 by 4:00 PM",
+  },
+  foodIncluded: true,
+  prizes: {
+    featuredTopTeamPrizeInr: 450000,
+    featuredTopTeamPrizeDisplay: "₹4,50,000",
+    featuredTopTeamPrizeScope: "Top teams from Hardware, Hybrid, and Software",
+    totalPrizePoolInr: 10000000,
+    totalPrizePoolDisplay: "₹1 Crore",
   },
   venue: {
     name: "ITC Royal Bengal",
@@ -95,9 +123,10 @@ export const eventContent = {
   },
   durationHours: 36,
   experiences: [
-    "Industry expert lectures",
+    "Industry expert sessions",
     "Networking opportunities",
     "36-hour hackathon",
+    "Food included",
   ],
   eligibility: "College students only",
   team: {
@@ -126,10 +155,10 @@ export const eventContent = {
     },
   ],
   highlights: [
-    { title: "36 Hours", subtitle: "Hackathon", accent: "cyan" },
-    { title: "Industry Experts", subtitle: "Lectures & insights", accent: "purple" },
-    { title: "Networking", subtitle: "Meet & collaborate", accent: "blue" },
-    { title: "Build the Future", subtitle: "Real-world impact", accent: "green" },
+    { title: "36 Hours", subtitle: "Offline hackathon", accent: "cyan" },
+    { title: "Industry Leaders", subtitle: "Online & in-person sessions", accent: "purple" },
+    { title: "Food Included", subtitle: "For participating teams", accent: "blue" },
+    { title: "₹1 Crore", subtitle: "Total prize pool", accent: "green" },
   ],
   about: {
     heading: "A Hackathon Plus Experience",
@@ -151,9 +180,9 @@ export const eventContent = {
     ],
   },
   keyInformation: [
-    { label: "Date", value: "1 November 2026" },
+    { label: "Date", value: "31 Oct reporting · 1 Nov main event" },
     { label: "Venue", value: "ITC Royal Bengal, Kolkata" },
-    { label: "Format", value: "36-hour hackathon + industry lectures + networking" },
+    { label: "Format", value: "36-hour offline hackathon + industry sessions + food included" },
     { label: "Hosted by", value: "GitHub · GDG India · Google Cloud" },
   ],
   timeline: [
@@ -168,9 +197,14 @@ export const eventContent = {
       detail: "Complete the ₹4,500 per-participant payment through your respective campus GDG head.",
     },
     {
-      title: "Event Date",
+      title: "Team Reporting & Offline Hackathon",
+      value: "31 October 2026 · by 4:00 PM",
+      detail: "All teams must report at ITC Royal Bengal by 4:00 PM. The offline hackathon resumes after reporting.",
+    },
+    {
+      title: "Main Event",
       value: "1 November 2026",
-      detail: "The hackathon plus event begins at ITC Royal Bengal, Kolkata.",
+      detail: "Main-stage event, industry sessions, networking, hackathon activities, and prize programming at ITC Royal Bengal.",
     },
   ],
   rules: [
@@ -229,6 +263,18 @@ export const eventContent = {
     {
       question: "Where is the event being held?",
       answer: "The event venue is ITC Royal Bengal, 1 JBS Haldane Avenue, Kolkata 700046, West Bengal, India.",
+    },
+    {
+      question: "When must teams report?",
+      answer: "All teams must report at ITC Royal Bengal by 4:00 PM on 31 October 2026. The offline hackathon resumes after reporting, with the main event on 1 November 2026.",
+    },
+    {
+      question: "Is food included?",
+      answer: "Yes. Food is included for participating teams during the event.",
+    },
+    {
+      question: "What is the prize pool?",
+      answer: "The announced total prize pool is ₹1 Crore. A ₹4,50,000 top-team prize amount is listed for top teams from the Hardware, Hybrid, and Software categories.",
     },
     {
       question: "How long is the hackathon?",
