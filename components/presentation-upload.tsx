@@ -37,11 +37,9 @@ function extensionOf(filename: string) {
 export function PresentationUpload({
   teamId,
   teamCode,
-  userId,
 }: {
   teamId: string;
   teamCode: string;
-  userId: string;
 }) {
   const [presentation, setPresentation] = useState<PresentationRow | null>(null);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
