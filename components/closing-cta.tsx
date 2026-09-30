@@ -27,6 +27,10 @@ export function Footer() {
           {eventContent.hosts.map((host) => <BrandLogo key={host.name} brand={host.name} />)}
         </div>
         <strong>{eventContent.name} 2026</strong>
+        <nav className="footer-legal-links" aria-label="Legal">
+          <Link href="/privacy">Privacy Policy</Link>
+          <Link href="/terms">Terms</Link>
+        </nav>
         <span>Innovate · Collaborate · Build</span>
       </div>
     </footer>
