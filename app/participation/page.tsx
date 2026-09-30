@@ -6,7 +6,7 @@ import { ParticipationClient } from "@/components/participation-client";
 export const metadata: Metadata = {
   title: "Participation | BUILD THE FUTURE HACKATHON 2026",
   description:
-    "Create your participant account, create or join a team, view teammates, share your 7-character team ID, and select a BUILD THE FUTURE HACKATHON 2026 problem statement.",
+    "Create your participant account, create or join a team, choose a problem statement, and upload your team project presentation for BUILD THE FUTURE HACKATHON 2026.",
 };
 
 export default function ParticipationPage() {
@@ -30,6 +30,7 @@ export default function ParticipationPage() {
               <span>2–6 members per team</span>
               <span>7-character team ID</span>
               <span>1 problem statement per team</span>
+              <span>Presentation due 30 Oct</span>
               <span>Payment via campus GDG head</span>
               <span>Report 31 Oct · by 4 PM</span>
             </div>
