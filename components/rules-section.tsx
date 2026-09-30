@@ -64,8 +64,8 @@ export function RulesSection() {
             <span className="rule-icon rule-blue"><EventIcon name="document" /></span>
             <h3>Project Presentation</h3>
             <p>
-              Every team must upload its project presentation through the portal by{" "}
-              {eventContent.presentationDeadline.display}.
+              The team leader must upload the team project presentation through the portal by{" "}
+              {eventContent.presentationDeadline.display}. Only the team leader can replace it.
             </p>
           </article>
 
