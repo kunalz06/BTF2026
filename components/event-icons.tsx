@@ -13,7 +13,8 @@ export type EventIconName =
   | "info"
   | "drone"
   | "brain"
-  | "automation";
+  | "automation"
+  | "check";
 
 export function EventIcon({ name, className = "" }: { name: EventIconName; className?: string }) {
   const common = { fill: "none", stroke: "currentColor", strokeWidth: 1.9, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
@@ -34,6 +35,7 @@ export function EventIcon({ name, className = "" }: { name: EventIconName; class
     drone: <><circle cx="5" cy="6" r="2.5" {...common}/><circle cx="19" cy="6" r="2.5" {...common}/><circle cx="5" cy="18" r="2.5" {...common}/><circle cx="19" cy="18" r="2.5" {...common}/><path d="M7 7.5 10 10m7-2.5L14 10m-7 6.5 3-2.5m7 2.5L14 14M9.5 10h5v4h-5z" {...common}/></>,
     brain: <><path d="M9 4.2A3.2 3.2 0 0 0 4.8 8 3.5 3.5 0 0 0 5 14.8 3.2 3.2 0 0 0 9 19.6M15 4.2A3.2 3.2 0 0 1 19.2 8a3.5 3.5 0 0 1-.2 6.8 3.2 3.2 0 0 1-4 4.8M9 4.2v15.4M15 4.2v15.4M9 8H7.5M15 8h1.5M9 12h6M9 16H7.8M15 16h1.2" {...common}/></>,
     automation: <><circle cx="12" cy="12" r="3.2" {...common}/><path d="M12 2.8v2.1M12 19.1v2.1M21.2 12h-2.1M4.9 12H2.8M18.5 5.5 17 7M7 17l-1.5 1.5M18.5 18.5 17 17M7 7 5.5 5.5" {...common}/><path d="M12 5.3a6.7 6.7 0 1 1-4.7 2" {...common}/></>,
+    check: <><path d="m5 12 4 4L19 6" {...common}/></>,
   };
 
   return <svg className={className} viewBox="0 0 24 24" aria-hidden="true">{paths[name]}</svg>;
