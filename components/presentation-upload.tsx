@@ -107,8 +107,7 @@ export function PresentationUpload({
       uploadBody.append("file", selectedFile);
       uploadBody.append("upload_preset", "ml_default");
       uploadBody.append("asset_folder", "btf2026/presentations");
-      uploadBody.append("public_id", `team-${teamCode}-presentation`);
-      uploadBody.append("overwrite", "true");
+      uploadBody.append("public_id", `team-${teamCode}-presentation-${Date.now()}`);
       uploadBody.append("tags", "btf2026,presentation");
 
       const response = await fetch(
