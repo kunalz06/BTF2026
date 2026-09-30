@@ -73,8 +73,9 @@ export default function TermsPage() {
                 <h2>5. Project presentation</h2>
                 <p>
                   Each team must upload its project presentation through the Participation portal
-                  by {eventContent.presentationDeadline.display}. The latest successful team upload
-                  before the deadline is treated as the team&apos;s submitted presentation.
+                  by {eventContent.presentationDeadline.display}. Only the team leader can upload or
+                  replace the presentation. The latest successful team-leader upload before the
+                  deadline is treated as the team&apos;s submitted presentation.
                 </p>
                 <p>
                   Teams are responsible for ensuring that submitted material is lawful, does not
