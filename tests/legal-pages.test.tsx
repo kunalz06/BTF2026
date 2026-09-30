@@ -19,6 +19,6 @@ describe("legal pages", () => {
     render(<TermsPage />);
     expect(screen.getByRole("heading", { name: "Terms" })).toBeInTheDocument();
     expect(screen.getAllByText(/30 October 2026/i).length).toBeGreaterThan(0);
-    expect(screen.getByText(/latest successful team upload/i)).toBeInTheDocument();
+    expect(screen.getByText(/Only the team leader can upload or replace/i)).toBeInTheDocument();
   });
 });
