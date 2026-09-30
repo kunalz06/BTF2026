@@ -46,8 +46,8 @@ describe("single-page navigation", () => {
 
   it("links to the legal pages from the footer", () => {
     render(<HomePage />);
-    expect(screen.getByRole("link", { name: "Privacy Policy" })).toHaveAttribute("href", "/privacy");
-    expect(screen.getByRole("link", { name: "Terms" })).toHaveAttribute("href", "/terms");
+    expect(screen.getAllByRole("link", { name: "Privacy Policy" })[0]).toHaveAttribute("href", "/privacy");
+    expect(screen.getAllByRole("link", { name: "Terms" })[0]).toHaveAttribute("href", "/terms");
   });
 
   it("renders partner logos throughout the site", () => {
