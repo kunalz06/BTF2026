@@ -5,6 +5,10 @@ describe("verified event content", () => {
   it("matches every supplied event fact", () => {
     expect(eventContent.name).toBe("BUILD THE FUTURE HACKATHON");
     expect(eventContent.date.display).toBe("1 November 2026");
+    expect(eventContent.reporting.fullDisplay).toBe("31 October 2026 by 4:00 PM");
+    expect(eventContent.foodIncluded).toBe(true);
+    expect(eventContent.prizes.featuredTopTeamPrizeDisplay).toBe("₹4,50,000");
+    expect(eventContent.prizes.totalPrizePoolDisplay).toBe("₹1 Crore");
     expect(eventContent.hosts.map((host) => host.name)).toEqual([
       "GitHub",
       "GDG India",
@@ -28,9 +32,10 @@ describe("verified event content", () => {
 
   it("contains the three promised experience pillars", () => {
     expect(eventContent.experiences).toEqual([
-      "Industry expert lectures",
+      "Industry expert sessions",
       "Networking opportunities",
       "36-hour hackathon",
+      "Food included",
     ]);
   });
 });
@@ -44,7 +49,8 @@ describe("page metadata", () => {
     expect(metadata.description).toContain("36-hour hackathon");
     expect(metadata.description).toContain("ITC Royal Bengal");
     const serialized = JSON.stringify(metadata).toLowerCase();
-    for (const unsupported of ["speaker", "prize", "register now"]) {
+    expect(metadata.description).toContain("₹1 Crore");
+    for (const unsupported of ["register now"]) {
       expect(serialized).not.toContain(unsupported);
     }
   });
