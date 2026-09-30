@@ -30,6 +30,7 @@ export default function ParticipationPage() {
               <span>2–6 members per team</span>
               <span>7-character team ID</span>
               <span>1 problem statement per team</span>
+              <span>Payment via campus GDG head</span>
             </div>
           </div>
         </section>
