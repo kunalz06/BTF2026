@@ -18,7 +18,7 @@ describe("legal pages", () => {
   it("publishes participation terms with the presentation deadline", () => {
     render(<TermsPage />);
     expect(screen.getByRole("heading", { name: "Terms" })).toBeInTheDocument();
-    expect(screen.getByText(/30 October 2026/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/30 October 2026/i).length).toBeGreaterThan(0);
     expect(screen.getByText(/latest successful team upload/i)).toBeInTheDocument();
   });
 });
