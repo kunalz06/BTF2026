@@ -204,7 +204,7 @@ export const eventContent = {
     {
       title: "Project Presentation Deadline",
       value: "30 October 2026",
-      detail: "Each team must upload its project presentation through the Participation portal by this date.",
+      detail: "The team leader must upload the team project presentation through the Participation portal by this date.",
     },
     {
       title: "Team Reporting & Offline Hackathon",
@@ -225,7 +225,7 @@ export const eventContent = {
     { title: "Membership", value: "A participant can be part of only one team" },
     { title: "Team Lead", value: "The participant who creates the team becomes the team lead by default" },
     { title: "Problem Statement", value: "Each team must select exactly one problem statement through the portal" },
-    { title: "Project Presentation", value: "Each team must upload its project presentation through the portal by 30 October 2026" },
+    { title: "Project Presentation", value: "Only the team leader can upload or replace the team presentation; deadline 30 October 2026" },
     { title: "Registration Fee", value: "₹4,500 per participant" },
     { title: "Payment", value: "Payment is completed through the respective campus GDG head, not through the web portal" },
     { title: "Payment Deadline", value: "2 October 2026" },
@@ -277,7 +277,7 @@ export const eventContent = {
     },
     {
       question: "When is the project presentation due?",
-      answer: "Each team must upload its project presentation through the Participation portal by 30 October 2026.",
+      answer: "The team leader must upload the team project presentation through the Participation portal by 30 October 2026. Only the team leader can upload or replace it.",
     },
     {
       question: "When must teams report?",
