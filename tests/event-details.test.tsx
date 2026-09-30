@@ -7,6 +7,8 @@ describe("event details page", () => {
   it("shows reporting, main-event, food and prize information", () => {
     render(<EventDetailsPage />);
 
+    expect(screen.getAllByText(/30 October 2026/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Project Presentation/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/31 October 2026/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/4:00 PM/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/1 November 2026/i).length).toBeGreaterThan(0);
