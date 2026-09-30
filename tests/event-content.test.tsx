@@ -14,7 +14,7 @@ describe("verified event content", () => {
     expect(eventContent.eligibility).toBe("College students only");
     expect(eventContent.team.minMembers).toBe(2);
     expect(eventContent.team.maxMembers).toBe(6);
-    expect(eventContent.team.leadRule).toBe("One member must be selected as team lead");
+    expect(eventContent.team.leadRule).toBe("The participant who creates the team becomes the team lead by default");
     expect(eventContent.fee.display).toBe("₹4,500 per participant");
     expect(eventContent.paymentDeadline.display).toBe("2 October 2026");
     expect(eventContent.venue.displayName).toBe("ITC Royal Bengal, Kolkata");
@@ -22,7 +22,8 @@ describe("verified event content", () => {
       "1 JBS Haldane Avenue, Kolkata 700046, West Bengal, India",
     );
     expect(eventContent.venue.mapsUrl).toContain("google.com/maps/search");
-    expect(eventContent.participationGuidance).toContain("respective college GDG team leads");
+    expect(eventContent.participationGuidance).toContain("Participation portal");
+    expect(eventContent.participationGuidance).toContain("campus GDG head");
   });
 
   it("contains the three promised experience pillars", () => {
