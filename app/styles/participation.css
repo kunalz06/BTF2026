@@ -678,3 +678,101 @@
     width: max-content;
   }
 }
+
+/* Google palette refresh */
+.participation-hero {
+  background:
+    radial-gradient(circle at 78% 24%, rgba(66,133,244,.18), transparent 27%),
+    radial-gradient(circle at 88% 82%, rgba(234,67,53,.09), transparent 28%),
+    linear-gradient(135deg,#07090d,#0b1118 68%,#10151c);
+}
+.participation-hero h1 strong {
+  color: transparent;
+  background: linear-gradient(90deg,#4285f4 0%,#4285f4 28%,#ea4335 48%,#fbbc05 68%,#34a853 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+.participation-rules-strip span:nth-child(4n+1) { border-color: rgba(66,133,244,.24); color: #8ab4f8; }
+.participation-rules-strip span:nth-child(4n+2) { border-color: rgba(234,67,53,.24); color: #f28b82; }
+.participation-rules-strip span:nth-child(4n+3) { border-color: rgba(251,188,5,.24); color: #fdd663; }
+.participation-rules-strip span:nth-child(4n+4) { border-color: rgba(52,168,83,.24); color: #81c995; }
+.participation-auth-points div:nth-child(1) svg { color: #8ab4f8; }
+.participation-auth-points div:nth-child(2) svg { color: #f28b82; }
+.participation-auth-points div:nth-child(3) svg { color: #81c995; }
+.auth-mode-tabs button.active {
+  background: rgba(66,133,244,.14);
+  color: #fff;
+  box-shadow: inset 0 0 0 1px rgba(66,133,244,.24);
+}
+.participation-form input:focus,
+.team-action-card input:focus,
+.problem-selection-form select:focus {
+  border-color: rgba(66,133,244,.68);
+  box-shadow: 0 0 0 3px rgba(66,133,244,.11);
+}
+.portal-message-success {
+  border-color: rgba(52,168,83,.28);
+  background: rgba(52,168,83,.08);
+  color: #81c995;
+}
+.portal-message-error {
+  border-color: rgba(234,67,53,.28);
+  background: rgba(234,67,53,.08);
+  color: #f28b82;
+}
+.portal-message-info {
+  border-color: rgba(66,133,244,.28);
+  background: rgba(66,133,244,.08);
+  color: #8ab4f8;
+}
+.portal-quiet-button:hover {
+  border-color: rgba(66,133,244,.34);
+}
+.team-action-icon {
+  background: rgba(66,133,244,.11);
+  color: #8ab4f8;
+}
+.team-action-icon-purple {
+  background: rgba(234,67,53,.10);
+  color: #f28b82;
+}
+.team-dashboard-header {
+  background:
+    radial-gradient(circle at 86% 10%,rgba(66,133,244,.12),transparent 30%),
+    linear-gradient(150deg,#111820,#0a1016);
+}
+.team-status-row .team-ready {
+  color: #81c995;
+  border-color: rgba(52,168,83,.22);
+  background: rgba(52,168,83,.07);
+}
+.team-status-row .team-waiting {
+  color: #fdd663;
+  border-color: rgba(251,188,5,.22);
+  background: rgba(251,188,5,.07);
+}
+.team-code-card {
+  border-color: rgba(66,133,244,.22);
+  background: rgba(66,133,244,.07);
+}
+.team-code-card button,
+.team-member-note strong,
+.selected-problem > span,
+.selected-problem a {
+  color: #8ab4f8;
+}
+.team-member-avatar {
+  background: rgba(66,133,244,.10);
+  color: #8ab4f8;
+}
+.team-member-row > b {
+  background: rgba(234,67,53,.10);
+  color: #f28b82;
+}
+.selected-problem {
+  border-color: rgba(66,133,244,.18);
+  background: rgba(66,133,244,.06);
+}
+.problem-empty-state svg {
+  color: #8ab4f8;
+}
