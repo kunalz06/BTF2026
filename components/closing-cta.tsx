@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { BrandLogo } from "@/components/brand-logos";
 import { eventContent } from "@/data/event";
 
@@ -10,7 +11,9 @@ export function ClosingCta() {
           <h2>Are you ready to <strong>build the future?</strong></h2>
           <p>{eventContent.cta.body}</p>
         </div>
-        <a className="button" href="#rules">View Team Guidelines <span aria-hidden="true">→</span></a>
+        <Link className="button" href="/participation">
+          {eventContent.cta.actionLabel} <span aria-hidden="true">→</span>
+        </Link>
       </div>
     </section>
   );
