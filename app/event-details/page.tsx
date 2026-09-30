@@ -31,6 +31,7 @@ export default function EventDetailsPage() {
                 ITC Royal Bengal by 4:00 PM, with the main event taking place on 1 November 2026.
               </p>
               <div className="event-details-chips" aria-label="Event highlights">
+                <span>30 Oct · presentation due</span>
                 <span>31 Oct · report by 4 PM</span>
                 <span>1 Nov · main event</span>
                 <span>36-hour hackathon</span>
@@ -63,6 +64,14 @@ export default function EventDetailsPage() {
             </div>
 
             <div className="event-logistics-grid">
+              <article className="event-logistics-card event-logistics-yellow">
+                <span><EventIcon name="document" /></span>
+                <p className="eyebrow">30 October 2026</p>
+                <h3>Project Presentation</h3>
+                <strong>Upload deadline</strong>
+                <p>Each team must upload its project presentation through the Participation portal by this date.</p>
+              </article>
+
               <article className="event-logistics-card event-logistics-blue">
                 <span><EventIcon name="users" /></span>
                 <p className="eyebrow">31 October 2026</p>
