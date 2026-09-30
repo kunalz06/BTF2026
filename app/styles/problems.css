@@ -386,3 +386,82 @@
   .problem-detail-actions { align-items: flex-start; flex-direction: column; }
   .problem-detail-actions .button { width: 100%; }
 }
+
+/* Google palette refresh */
+.problems-hero,
+.problem-detail-hero {
+  background:
+    radial-gradient(circle at 76% 22%, rgba(66,133,244,.18), transparent 28%),
+    radial-gradient(circle at 88% 74%, rgba(234,67,53,.10), transparent 30%),
+    linear-gradient(135deg,#07090d,#0b1118 65%,#10151c);
+}
+.problems-hero h1 strong,
+.problem-detail-hero h1 strong {
+  color: transparent;
+  background: linear-gradient(90deg,#4285f4 0%,#4285f4 28%,#ea4335 48%,#fbbc05 68%,#34a853 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+.problem-track-icon {
+  color: #8ab4f8;
+  background: rgba(66,133,244,.11);
+}
+.track-ai-software .problem-track-icon {
+  color: #f28b82;
+  background: rgba(234,67,53,.10);
+}
+.track-automation .problem-track-icon {
+  color: #81c995;
+  background: rgba(52,168,83,.10);
+}
+.problem-track-tile:hover {
+  border-color: rgba(66,133,244,.42);
+}
+.problem-id {
+  color: #8ab4f8;
+  background: rgba(66,133,244,.10);
+  border-color: rgba(66,133,244,.20);
+}
+.problem-type-hardware {
+  color: #fdd663;
+  background: rgba(251,188,5,.10);
+  border-color: rgba(251,188,5,.20);
+}
+.problem-type-software {
+  color: #8ab4f8;
+  background: rgba(66,133,244,.10);
+  border-color: rgba(66,133,244,.20);
+}
+.problem-type-hybrid {
+  color: #81c995;
+  background: rgba(52,168,83,.09);
+  border-color: rgba(52,168,83,.19);
+}
+.problem-card:nth-child(4n+1) { border-top: 2px solid rgba(66,133,244,.48); }
+.problem-card:nth-child(4n+2) { border-top: 2px solid rgba(234,67,53,.48); }
+.problem-card:nth-child(4n+3) { border-top: 2px solid rgba(251,188,5,.48); }
+.problem-card:nth-child(4n+4) { border-top: 2px solid rgba(52,168,83,.48); }
+.problem-card-actions a:hover,
+.selected-problem a {
+  color: #8ab4f8;
+}
+.problem-detail-section li::before {
+  border-color: #4285f4;
+}
+.problem-objective {
+  border-color: rgba(66,133,244,.24);
+  background: linear-gradient(135deg,#f8fbff,#eef4ff);
+}
+.problem-objective > span {
+  color: #4285f4;
+}
+.problem-download-icon {
+  color: #8ab4f8;
+  background: rgba(66,133,244,.11);
+}
+.problem-detail-next {
+  background:
+    radial-gradient(circle at 42% 110%,rgba(66,133,244,.20),transparent 34%),
+    radial-gradient(circle at 62% 110%,rgba(52,168,83,.12),transparent 28%),
+    #07101a;
+}
