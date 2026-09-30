@@ -31,6 +31,7 @@ export default function ParticipationPage() {
               <span>7-character team ID</span>
               <span>1 problem statement per team</span>
               <span>Payment via campus GDG head</span>
+              <span>Report 31 Oct · by 4 PM</span>
             </div>
           </div>
         </section>
