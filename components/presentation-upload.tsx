@@ -37,9 +37,13 @@ function extensionOf(filename: string) {
 export function PresentationUpload({
   teamId,
   teamCode,
+  isLeader,
+  onStatusChange,
 }: {
   teamId: string;
   teamCode: string;
+  isLeader: boolean;
+  onStatusChange?: (uploaded: boolean) => void;
 }) {
   const [presentation, setPresentation] = useState<PresentationRow | null>(null);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -58,10 +62,12 @@ export function PresentationUpload({
     if (error) {
       setMessage({ tone: "error", text: error.message });
     } else {
-      setPresentation(data as PresentationRow | null);
+      const nextPresentation = data as PresentationRow | null;
+      setPresentation(nextPresentation);
+      onStatusChange?.(Boolean(nextPresentation));
     }
     setLoading(false);
-  }, [teamId]);
+  }, [onStatusChange, teamId]);
 
   useEffect(() => {
     let active = true;
@@ -77,7 +83,9 @@ export function PresentationUpload({
         if (error) {
           setMessage({ tone: "error", text: error.message });
         } else {
-          setPresentation(data as PresentationRow | null);
+          const nextPresentation = data as PresentationRow | null;
+          setPresentation(nextPresentation);
+          onStatusChange?.(Boolean(nextPresentation));
         }
         setLoading(false);
       });
@@ -116,7 +124,7 @@ export function PresentationUpload({
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!selectedFile) return;
+    if (!isLeader || !selectedFile) return;
 
     setUploading(true);
     setMessage(null);
@@ -212,46 +220,56 @@ export function PresentationUpload({
         </div>
       )}
 
-      <form className="presentation-upload-form" onSubmit={handleSubmit}>
-        <label htmlFor="project-presentation">
-          {presentation ? "Replace project presentation" : "Choose project presentation"}
-        </label>
-        <input
-          id="project-presentation"
-          type="file"
-          accept=".pdf,.ppt,.pptx,application/pdf,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation"
-          onChange={handleFile}
-          disabled={uploading}
-          required
-        />
+      {isLeader ? (
+        <form className="presentation-upload-form" onSubmit={handleSubmit}>
+          <label htmlFor="project-presentation">
+            {presentation ? "Replace project presentation" : "Choose project presentation"}
+          </label>
+          <input
+            id="project-presentation"
+            type="file"
+            accept=".pdf,.ppt,.pptx,application/pdf,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation"
+            onChange={handleFile}
+            disabled={uploading}
+            required
+          />
 
-        {selectedFile ? (
-          <div className="presentation-selected-file">
-            <EventIcon name="document" />
-            <span>{selectedFile.name}</span>
-            <small>{formatBytes(selectedFile.size)}</small>
+          {selectedFile ? (
+            <div className="presentation-selected-file">
+              <EventIcon name="document" />
+              <span>{selectedFile.name}</span>
+              <small>{formatBytes(selectedFile.size)}</small>
+            </div>
+          ) : null}
+
+          {message ? (
+            <div className={`portal-message portal-message-${message.tone}`} role="status">
+              {message.text}
+            </div>
+          ) : null}
+
+          <button className="button" type="submit" disabled={!selectedFile || uploading}>
+            {uploading
+              ? "Uploading…"
+              : presentation
+                ? "Replace project presentation"
+                : "Upload project presentation"}
+          </button>
+
+          <p className="presentation-upload-note">
+            Only the team leader can upload or replace the team presentation. The latest successful
+            upload before the deadline is treated as the team&apos;s submission.
+          </p>
+        </form>
+      ) : (
+        <div className="presentation-leader-only">
+          <EventIcon name="crown" />
+          <div>
+            <strong>Team leader action</strong>
+            <span>Only the team leader can upload or replace the project presentation.</span>
           </div>
-        ) : null}
-
-        {message ? (
-          <div className={`portal-message portal-message-${message.tone}`} role="status">
-            {message.text}
-          </div>
-        ) : null}
-
-        <button className="button" type="submit" disabled={!selectedFile || uploading}>
-          {uploading
-            ? "Uploading…"
-            : presentation
-              ? "Replace project presentation"
-              : "Upload project presentation"}
-        </button>
-
-        <p className="presentation-upload-note">
-          Any member of the team can upload or replace the team presentation before the deadline.
-          The latest successful upload is treated as the team&apos;s submission.
-        </p>
-      </form>
+        </div>
+      )}
     </section>
   );
 }
