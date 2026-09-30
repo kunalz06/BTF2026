@@ -10,14 +10,14 @@ describe("single-page navigation", () => {
     }
   });
 
-  it("uses participation guidance rather than direct registration", () => {
+  it("routes participation CTAs to the web portal", () => {
     render(<HomePage />);
-    const ctas = screen.getAllByRole("link", { name: /get involved/i });
+    const ctas = screen.getAllByRole("link", { name: /get involved|open participation portal/i });
     expect(ctas.length).toBeGreaterThan(0);
     for (const cta of ctas) {
-      expect(cta).toHaveAttribute("href", "/#participate");
+      expect(cta).toHaveAttribute("href", "/participation");
     }
-    expect(screen.queryByRole("button", { name: /checkout|pay|register/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /checkout|pay/i })).not.toBeInTheDocument();
   });
 
   it("links to the problem statements page", () => {
