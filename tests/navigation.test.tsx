@@ -20,6 +20,14 @@ describe("single-page navigation", () => {
     expect(screen.queryByRole("button", { name: /checkout|pay/i })).not.toBeInTheDocument();
   });
 
+  it("links to the event details page", () => {
+    render(<HomePage />);
+    expect(screen.getAllByRole("link", { name: "Event Details" })[0]).toHaveAttribute(
+      "href",
+      "/event-details",
+    );
+  });
+
   it("links to the problem statements page", () => {
     render(<HomePage />);
     expect(screen.getAllByRole("link", { name: "Problems" })[0]).toHaveAttribute(
