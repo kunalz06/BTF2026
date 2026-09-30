@@ -54,6 +54,7 @@ export type EventContent = {
     hotelUrl: string;
   };
   paymentDeadline: { iso: string; display: string };
+  presentationDeadline: { iso: string; display: string };
   durationHours: number;
   experiences: readonly string[];
   eligibility: string;
@@ -120,6 +121,10 @@ export const eventContent = {
   paymentDeadline: {
     iso: "2026-10-02",
     display: "2 October 2026",
+  },
+  presentationDeadline: {
+    iso: "2026-10-30",
+    display: "30 October 2026",
   },
   durationHours: 36,
   experiences: [
@@ -197,6 +202,11 @@ export const eventContent = {
       detail: "Complete the ₹4,500 per-participant payment through your respective campus GDG head.",
     },
     {
+      title: "Project Presentation Deadline",
+      value: "30 October 2026",
+      detail: "Each team must upload its project presentation through the Participation portal by this date.",
+    },
+    {
       title: "Team Reporting & Offline Hackathon",
       value: "31 October 2026 · by 4:00 PM",
       detail: "All teams must report at ITC Royal Bengal by 4:00 PM. The offline hackathon resumes after reporting.",
@@ -215,6 +225,7 @@ export const eventContent = {
     { title: "Membership", value: "A participant can be part of only one team" },
     { title: "Team Lead", value: "The participant who creates the team becomes the team lead by default" },
     { title: "Problem Statement", value: "Each team must select exactly one problem statement through the portal" },
+    { title: "Project Presentation", value: "Each team must upload its project presentation through the portal by 30 October 2026" },
     { title: "Registration Fee", value: "₹4,500 per participant" },
     { title: "Payment", value: "Payment is completed through the respective campus GDG head, not through the web portal" },
     { title: "Payment Deadline", value: "2 October 2026" },
@@ -263,6 +274,10 @@ export const eventContent = {
     {
       question: "Where is the event being held?",
       answer: "The event venue is ITC Royal Bengal, 1 JBS Haldane Avenue, Kolkata 700046, West Bengal, India.",
+    },
+    {
+      question: "When is the project presentation due?",
+      answer: "Each team must upload its project presentation through the Participation portal by 30 October 2026.",
     },
     {
       question: "When must teams report?",
