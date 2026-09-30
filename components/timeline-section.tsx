@@ -1,7 +1,7 @@
 import { EventIcon, type EventIconName } from "@/components/event-icons";
 import { eventContent } from "@/data/event";
 
-const icons: EventIconName[] = ["document", "calendar", "users", "trophy"];
+const icons: EventIconName[] = ["document", "rupee", "document", "users", "trophy"];
 
 export function TimelineSection() {
   return (
