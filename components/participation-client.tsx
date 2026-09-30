@@ -12,7 +12,9 @@ import {
 import { EventIcon } from "@/components/event-icons";
 import { problemStatements, problemTracks } from "@/data/problem-statements";
 import {
+  isValidParticipantName,
   isValidTeamCode,
+  normalizeParticipantName,
   normalizeTeamCode,
   TEAM_MAX_MEMBERS,
   TEAM_MIN_MEMBERS,
@@ -34,6 +36,7 @@ type MemberRow = {
 };
 
 type MemberView = MemberRow & {
+  full_name: string;
   email: string;
 };
 
@@ -57,6 +60,7 @@ function getErrorMessage(error: unknown) {
 export function ParticipationClient() {
   const [session, setSession] = useState<Session | null | undefined>(undefined);
   const [authMode, setAuthMode] = useState<"signin" | "signup">("signup");
+  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [team, setTeam] = useState<TeamRow | null>(null);
@@ -116,16 +120,19 @@ export function ParticipationClient() {
       const memberRows = (memberResult.data ?? []) as MemberRow[];
       const memberIds = memberRows.map((member) => member.user_id);
 
-      let emailMap = new Map<string, string>();
+      let profileMap = new Map<string, { full_name: string; email: string }>();
       if (memberIds.length > 0) {
         const profileResult = await supabase
           .from("btf_participants")
-          .select("user_id, email")
+          .select("user_id, full_name, email")
           .in("user_id", memberIds);
 
         if (profileResult.error) throw profileResult.error;
-        emailMap = new Map(
-          (profileResult.data ?? []).map((profile) => [profile.user_id, profile.email]),
+        profileMap = new Map(
+          (profileResult.data ?? []).map((profile) => [
+            profile.user_id,
+            { full_name: profile.full_name, email: profile.email },
+          ]),
         );
       }
 
@@ -133,7 +140,8 @@ export function ParticipationClient() {
       const memberViews = memberRows
         .map((member) => ({
           ...member,
-          email: emailMap.get(member.user_id) ?? "Team member",
+          full_name: profileMap.get(member.user_id)?.full_name ?? "Team member",
+          email: profileMap.get(member.user_id)?.email ?? "",
         }))
         .sort((a, b) => {
           if (a.user_id === teamData.leader_id) return -1;
@@ -198,7 +206,17 @@ export function ParticipationClient() {
     event.preventDefault();
     setFeedback(null);
 
+    const normalizedName = normalizeParticipantName(fullName);
     const normalizedEmail = email.trim().toLowerCase();
+
+    if (authMode === "signup" && !isValidParticipantName(normalizedName)) {
+      setFeedback({
+        tone: "error",
+        message: "Enter your full name using between 2 and 80 characters.",
+      });
+      return;
+    }
+
     if (!normalizedEmail || password.length < 8) {
       setFeedback({
         tone: "error",
@@ -214,6 +232,12 @@ export function ParticipationClient() {
         const { data, error } = await supabase.auth.signUp({
           email: normalizedEmail,
           password,
+          options: {
+            data: {
+              full_name: normalizedName,
+              btf_participant: true,
+            },
+          },
         });
 
         if (error) throw error;
@@ -224,7 +248,7 @@ export function ParticipationClient() {
           setFeedback({
             tone: "info",
             message:
-              "Account created. Check your email for the Supabase confirmation message. After confirming, return here and sign in.",
+              "Account created. Check your email for the confirmation message. After confirming, return here and sign in.",
           });
           setAuthMode("signin");
         }
@@ -376,8 +400,8 @@ export function ParticipationClient() {
             <p className="eyebrow">Participant account</p>
             <h2>One account for your hackathon team.</h2>
             <p>
-              Your Supabase account keeps your team membership private and persistent across
-              devices. A participant can belong to only one team.
+              Your account keeps your team membership private and persistent across devices.
+              A participant can belong to only one team.
             </p>
             <div className="participation-auth-points">
               <div><EventIcon name="users" /><span>Create or join exactly one team</span></div>
@@ -405,6 +429,22 @@ export function ParticipationClient() {
             </div>
 
             <form className="participation-form" onSubmit={handleAuth}>
+              {authMode === "signup" ? (
+                <div>
+                  <label htmlFor="participant-name">Full name</label>
+                  <input
+                    id="participant-name"
+                    type="text"
+                    autoComplete="name"
+                    minLength={2}
+                    maxLength={80}
+                    value={fullName}
+                    onChange={(event) => setFullName(event.target.value)}
+                    placeholder="Your full name"
+                    required
+                  />
+                </div>
+              ) : null}
               <div>
                 <label htmlFor="participant-email">Email</label>
                 <input
@@ -443,8 +483,8 @@ export function ParticipationClient() {
             </form>
 
             <p className="participation-auth-note">
-              Email/password authentication is handled by Supabase Auth. If email confirmation is
-              requested, confirm the message in your inbox, return to this page, and sign in.
+              If email confirmation is requested, confirm the message in your inbox, return to this
+              page, and sign in.
             </p>
           </div>
         </div>
@@ -458,7 +498,8 @@ export function ParticipationClient() {
         <div className="participant-account-bar">
           <div>
             <span>Signed in as</span>
-            <strong>{user.email}</strong>
+            <strong>{String(user.user_metadata?.full_name ?? user.email ?? "Participant")}</strong>
+            {user.user_metadata?.full_name && user.email ? <span>{user.email}</span> : null}
           </div>
           <div className="participant-account-actions">
             {team ? (
@@ -647,8 +688,9 @@ function TeamDashboard({
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <div>
-                    <strong>{member.email}</strong>
+                    <strong>{member.full_name}</strong>
                     <span>
+                      {member.email ? `${member.email} · ` : ""}
                       {leader ? "Team leader" : "Team member"}
                       {current ? " · You" : ""}
                     </span>
