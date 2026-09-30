@@ -21,6 +21,7 @@ describe("verified event content", () => {
     expect(eventContent.team.leadRule).toBe("The participant who creates the team becomes the team lead by default");
     expect(eventContent.fee.display).toBe("₹4,500 per participant");
     expect(eventContent.paymentDeadline.display).toBe("2 October 2026");
+    expect(eventContent.presentationDeadline.display).toBe("30 October 2026");
     expect(eventContent.venue.displayName).toBe("ITC Royal Bengal, Kolkata");
     expect(eventContent.venue.address).toBe(
       "1 JBS Haldane Avenue, Kolkata 700046, West Bengal, India",
@@ -48,6 +49,7 @@ describe("page metadata", () => {
     expect(metadata.description).toContain("1 November 2026");
     expect(metadata.description).toContain("36-hour hackathon");
     expect(metadata.description).toContain("ITC Royal Bengal");
+    expect(metadata.description).toContain("30 October 2026");
     const serialized = JSON.stringify(metadata).toLowerCase();
     expect(metadata.description).toContain("₹1 Crore");
     for (const unsupported of ["register now"]) {
