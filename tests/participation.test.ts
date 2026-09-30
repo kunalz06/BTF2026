@@ -1,7 +1,11 @@
 import { describe, expect, it } from "vitest";
 import {
+  isValidParticipantName,
   isValidTeamCode,
+  normalizeParticipantName,
   normalizeTeamCode,
+  PARTICIPANT_NAME_MAX_LENGTH,
+  PARTICIPANT_NAME_MIN_LENGTH,
   TEAM_ID_LENGTH,
   TEAM_MAX_MEMBERS,
   TEAM_MIN_MEMBERS,
@@ -24,5 +28,13 @@ describe("participation team rules", () => {
   it("matches the hackathon team-size rules", () => {
     expect(TEAM_MIN_MEMBERS).toBe(2);
     expect(TEAM_MAX_MEMBERS).toBe(6);
+  });
+
+  it("normalizes and validates participant names", () => {
+    expect(normalizeParticipantName("  Kunal   Mitra  ")).toBe("Kunal Mitra");
+    expect(isValidParticipantName("Kunal Mitra")).toBe(true);
+    expect(isValidParticipantName("K")).toBe(false);
+    expect(PARTICIPANT_NAME_MIN_LENGTH).toBe(2);
+    expect(PARTICIPANT_NAME_MAX_LENGTH).toBe(80);
   });
 });
