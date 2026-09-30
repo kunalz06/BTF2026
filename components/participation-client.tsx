@@ -73,6 +73,7 @@ export function ParticipationClient() {
   const [joinCode, setJoinCode] = useState("");
   const [problemSlug, setProblemSlug] = useState("");
   const [copied, setCopied] = useState(false);
+  const [presentationUploaded, setPresentationUploaded] = useState(false);
 
   const user = session?.user ?? null;
   const isLeader = Boolean(user && team && team.leader_id === user.id);
@@ -97,6 +98,7 @@ export function ParticipationClient() {
         setTeam(null);
         setMembers([]);
         setProblemSlug("");
+        setPresentationUploaded(false);
         return;
       }
 
@@ -183,6 +185,7 @@ export function ParticipationClient() {
         setTeam(null);
         setMembers([]);
         setProblemSlug("");
+        setPresentationUploaded(false);
       }
     });
 
@@ -370,9 +373,14 @@ export function ParticipationClient() {
       setFeedback(null);
       setTeam(null);
       setMembers([]);
+      setPresentationUploaded(false);
     }
     setBusyAction(null);
   }
+
+  const handlePresentationStatus = useCallback((uploaded: boolean) => {
+    setPresentationUploaded(uploaded);
+  }, []);
 
   async function copyTeamCode() {
     if (!team) return;
@@ -542,10 +550,13 @@ export function ParticipationClient() {
               copied={copied}
               copyTeamCode={copyTeamCode}
               handleProblemSelection={handleProblemSelection}
+              presentationUploaded={presentationUploaded}
             />
             <PresentationUpload
               teamId={team.id}
               teamCode={team.team_code}
+              isLeader={isLeader}
+              onStatusChange={handlePresentationStatus}
             />
           </>
         ) : (
@@ -636,6 +647,7 @@ function TeamDashboard({
   copied,
   copyTeamCode,
   handleProblemSelection,
+  presentationUploaded,
 }: {
   team: TeamRow;
   members: MemberView[];
@@ -648,8 +660,12 @@ function TeamDashboard({
   copied: boolean;
   copyTeamCode: () => Promise<void>;
   handleProblemSelection: (event: FormEvent<HTMLFormElement>) => Promise<void>;
+  presentationUploaded: boolean;
 }) {
   const minimumReady = members.length >= TEAM_MIN_MEMBERS;
+  const problemSelected = Boolean(selectedProblem);
+  const completedSteps =
+    Number(minimumReady) + Number(problemSelected) + Number(presentationUploaded);
 
   return (
     <div className="team-dashboard">
@@ -657,12 +673,7 @@ function TeamDashboard({
         <div>
           <p className="eyebrow">Your team</p>
           <h2>{team.name}</h2>
-          <div className="team-status-row">
-            <span className={minimumReady ? "team-ready" : "team-waiting"}>
-              {minimumReady ? "Minimum team size reached" : `Need ${TEAM_MIN_MEMBERS - members.length} more member${TEAM_MIN_MEMBERS - members.length === 1 ? "" : "s"}`}
-            </span>
-            <span>{members.length}/{TEAM_MAX_MEMBERS} members</span>
-          </div>
+
         </div>
 
         <div className="team-code-card">
@@ -673,6 +684,67 @@ function TeamDashboard({
           </button>
         </div>
       </header>
+
+      <section className="team-progress-card" aria-labelledby="team-progress-title">
+        <div className="team-progress-heading">
+          <div>
+            <p className="eyebrow">Team progress</p>
+            <h3 id="team-progress-title">Preparation checklist</h3>
+          </div>
+          <strong>{completedSteps}/3 complete</strong>
+        </div>
+
+        <ul className="team-progress-checklist">
+          <li className={minimumReady ? "completed" : ""}>
+            <span className="team-progress-check">
+              {minimumReady ? <EventIcon name="check" /> : <span aria-hidden="true">1</span>}
+            </span>
+            <div>
+              <strong>Team members added</strong>
+              <span>
+                {minimumReady
+                  ? `${members.length} members added · minimum team size reached`
+                  : `${members.length}/${TEAM_MIN_MEMBERS} required members added`}
+              </span>
+            </div>
+            <b>{minimumReady ? "Done" : "Pending"}</b>
+          </li>
+
+          <li className={problemSelected ? "completed" : ""}>
+            <span className="team-progress-check">
+              {problemSelected ? <EventIcon name="check" /> : <span aria-hidden="true">2</span>}
+            </span>
+            <div>
+              <strong>Problem statement selected</strong>
+              <span>
+                {selectedProblem
+                  ? `${selectedProblem.id} · ${selectedProblem.title}`
+                  : isLeader
+                    ? "Select one problem statement for the team."
+                    : "Waiting for the team leader to select a problem statement."}
+              </span>
+            </div>
+            <b>{problemSelected ? "Done" : "Pending"}</b>
+          </li>
+
+          <li className={presentationUploaded ? "completed" : ""}>
+            <span className="team-progress-check">
+              {presentationUploaded ? <EventIcon name="check" /> : <span aria-hidden="true">3</span>}
+            </span>
+            <div>
+              <strong>Project presentation uploaded</strong>
+              <span>
+                {presentationUploaded
+                  ? "The team presentation has been submitted."
+                  : isLeader
+                    ? "Upload the project presentation by 30 October 2026."
+                    : "Waiting for the team leader to upload the project presentation."}
+              </span>
+            </div>
+            <b>{presentationUploaded ? "Done" : "Pending"}</b>
+          </li>
+        </ul>
+      </section>
 
       <div className="team-dashboard-grid">
         <section className="team-members-card">
